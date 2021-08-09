@@ -1,0 +1,31 @@
+modLoader="javafml" #mandatory
+loaderVersion="[36,)" #mandatory
+license="All rights reserved"
+
+[[mods]] #mandatory
+modId="lycheed" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Lycheed" #mandatory
+displayURL="https://www.curseforge.com/members/thecraftyghost___/projects"
+logoFile="logo.png" #optional
+credits="Idea and Textures by TheCraftyGhost, Code by Uraneptus" #optional
+authors="TheCraftyGhost, Uraneptus" #optional
+description='''
+'''
+
+[[dependencies.lycheed]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[36,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.lycheed]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
+
+[modproperties.lycheed]
+    catalogueImageIcon= "lycheed_icon.png"

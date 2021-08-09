@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "lycheed:block/stripped_lychee_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "lycheed:block/stripped_lychee_wood"
+    },
+    "axis=z": {
+      "model": "lycheed:block/stripped_lychee_wood",
+      "x": 90
+    }
+  }
+}
