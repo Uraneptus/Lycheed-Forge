@@ -7,8 +7,8 @@ modId="lycheed" #mandatory
 version="${file.jarVersion}" #mandatory
 displayName="Lycheed" #mandatory
 displayURL="https://www.curseforge.com/members/thecraftyghost___/projects"
-logoFile="logo.png" #optional
-credits="Idea and Textures by TheCraftyGhost, Code by Uraneptus" #optional
+logoFile="lycheed_banner.png" #optional
+credits="Idea and Textures by TheCraftyGhost, Code by Uraneptus, Banner by Nivolas" #optional
 authors="TheCraftyGhost, Uraneptus" #optional
 description='''
 '''
