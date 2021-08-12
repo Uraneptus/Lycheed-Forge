@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "lycheed:block/chinensis_planks",
+    "top": "lycheed:block/chinensis_planks",
+    "side": "lycheed:block/chinensis_planks"
+  }
+}

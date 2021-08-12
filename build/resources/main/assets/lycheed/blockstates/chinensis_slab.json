@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lycheed:block/chinensis_slab"
+    },
+    "type=double": {
+      "model": "lycheed:block/chinensis_planks"
+    },
+    "type=top": {
+      "model": "lycheed:block/chinensis_slab_top"
+    }
+  }
+}

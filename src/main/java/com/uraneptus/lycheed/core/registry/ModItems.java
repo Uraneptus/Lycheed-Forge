@@ -30,44 +30,44 @@ public class ModItems {
 
 
     //BLOCK ITEMS
-    public static final RegistryObject<BlockItem> LYCHEE_PLANKS = ITEMS.register("lychee_planks",
-            ()-> new BlockItem(ModBlocks.LYCHEE_PLANKS.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_PLANKS = ITEMS.register("chinensis_planks",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_PLANKS.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_LOG = ITEMS.register("lychee_log",
-            ()-> new BlockItem(ModBlocks.LYCHEE_LOG.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_LOG = ITEMS.register("chinensis_log",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_LOG.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_WOOD = ITEMS.register("lychee_wood",
-            ()-> new BlockItem(ModBlocks.LYCHEE_WOOD.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_WOOD = ITEMS.register("chinensis_wood",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_WOOD.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> STRIPPED_LYCHEE_LOG = ITEMS.register("stripped_lychee_log",
-            ()-> new BlockItem(ModBlocks.STRIPPED_LYCHEE_LOG.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> STRIPPED_CHINENSIS_LOG = ITEMS.register("stripped_chinensis_log",
+            ()-> new BlockItem(ModBlocks.STRIPPED_CHINENSIS_LOG.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> STRIPPED_LYCHEE_WOOD = ITEMS.register("stripped_lychee_wood",
-            ()-> new BlockItem(ModBlocks.STRIPPED_LYCHEE_WOOD.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> STRIPPED_CHINENSIS_WOOD = ITEMS.register("stripped_chinensis_wood",
+            ()-> new BlockItem(ModBlocks.STRIPPED_CHINENSIS_WOOD.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_SLAB = ITEMS.register("lychee_slab",
-            ()-> new BlockItem(ModBlocks.LYCHEE_SLAB.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_SLAB = ITEMS.register("chinensis_slab",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_SLAB.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_STAIRS = ITEMS.register("lychee_stairs",
-            ()-> new BlockItem(ModBlocks.LYCHEE_STAIRS.get(), BUILDING_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_STAIRS = ITEMS.register("chinensis_stairs",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_STAIRS.get(), BUILDING_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_DOOR = ITEMS.register("lychee_door",
-            ()-> new BlockItem(ModBlocks.LYCHEE_DOOR.get(), REDSTONE));
+    public static final RegistryObject<BlockItem> CHINENSIS_DOOR = ITEMS.register("chinensis_door",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_DOOR.get(), REDSTONE));
 
-    public static final RegistryObject<BlockItem> LYCHEE_TRAPDOOR = ITEMS.register("lychee_trapdoor",
-            ()-> new BlockItem(ModBlocks.LYCHEE_TRAPDOOR.get(), REDSTONE));
+    public static final RegistryObject<BlockItem> CHINENSIS_TRAPDOOR = ITEMS.register("chinensis_trapdoor",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_TRAPDOOR.get(), REDSTONE));
 
-    public static final RegistryObject<BlockItem> LYCHEE_FENCE = ITEMS.register("lychee_fence",
-            ()-> new BlockItem(ModBlocks.LYCHEE_FENCE.get(), DECORATION_BLOCKS));
+    public static final RegistryObject<BlockItem> CHINENSIS_FENCE = ITEMS.register("chinensis_fence",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_FENCE.get(), DECORATION_BLOCKS));
 
-    public static final RegistryObject<BlockItem> LYCHEE_FENCE_GATE = ITEMS.register("lychee_fence_gate",
-            ()-> new BlockItem(ModBlocks.LYCHEE_FENCE_GATE.get(), REDSTONE));
+    public static final RegistryObject<BlockItem> CHINENSIS_FENCE_GATE = ITEMS.register("chinensis_fence_gate",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_FENCE_GATE.get(), REDSTONE));
 
-    public static final RegistryObject<BlockItem> LYCHEE_PRESSURE_PLATE = ITEMS.register("lychee_pressure_plate",
-            ()-> new BlockItem(ModBlocks.LYCHEE_PRESSURE_PLATE.get(), REDSTONE));
+    public static final RegistryObject<BlockItem> CHINENSIS_PRESSURE_PLATE = ITEMS.register("chinensis_pressure_plate",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_PRESSURE_PLATE.get(), REDSTONE));
 
-    public static final RegistryObject<BlockItem> LYCHEE_BUTTON = ITEMS.register("lychee_button",
-            ()-> new BlockItem(ModBlocks.LYCHEE_BUTTON.get(), REDSTONE));
+    public static final RegistryObject<BlockItem> CHINENSIS_BUTTON = ITEMS.register("chinensis_button",
+            ()-> new BlockItem(ModBlocks.CHINENSIS_BUTTON.get(), REDSTONE));
 
 
 
