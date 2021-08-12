@@ -1,10 +1,8 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
@@ -27,6 +25,10 @@ public class ModItems {
     public static final RegistryObject<Item> ROTTEN_LYCHEE = ITEMS.register("rotten_lychee",
             () -> new Item(FOOD.food(new Food.Builder().nutrition(2).saturationMod(0.4F)
                             .effect(() -> new EffectInstance(Effects.CONFUSION, 100, 1), 1.0F).build())));
+
+    public static final RegistryObject<Item> CHINENSIS_BOAT = ITEMS.register("chinensis_boat",
+            () -> new BoatItem(BoatEntity.Type.OAK, (TRANSPORTATION.stacksTo(1))));
+
 
 
     //BLOCK ITEMS

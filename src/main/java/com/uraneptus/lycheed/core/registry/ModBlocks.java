@@ -2,7 +2,10 @@ package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.common.blocks.ModLogBlock;
+import com.uraneptus.lycheed.common.blocks.ModStandingSignBlock;
+import com.uraneptus.lycheed.common.blocks.ModWallSignBlock;
 import com.uraneptus.lycheed.common.blocks.ModWoodBlock;
+import com.uraneptus.lycheed.core.ModWoodTypes;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -16,9 +19,10 @@ public class ModBlocks {
 
     public static final AbstractBlock.Properties CHINENSIS_PLANKS_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).harvestTool(ToolType.AXE).strength(2.0F, 3.0F).sound(SoundType.WOOD);
     public static final AbstractBlock.Properties CHINENSIS_LOG_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(2.0F).sound(SoundType.WOOD);
-    public static final AbstractBlock.Properties CHINENSIS_DOOR_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(3.0F).sound(SoundType.WOOD);
-    public static final AbstractBlock.Properties CHINENSIS_BUTTON_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD);
-    public static final AbstractBlock.Properties CHINENSIS_PRESSURE_PLATE_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD);
+    public static final AbstractBlock.Properties CHINENSIS_DOOR_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(3.0F).sound(SoundType.WOOD).noOcclusion();
+    public static final AbstractBlock.Properties CHINENSIS_BUTTON_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD).noCollission();
+    public static final AbstractBlock.Properties CHINENSIS_PRESSURE_PLATE_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD).noCollission();
+    public static final AbstractBlock.Properties CHINENSIS_SIGN_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(2.0F).sound(SoundType.WOOD).noCollission().noOcclusion();
 
 
 
@@ -62,6 +66,12 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHINENSIS_BUTTON = BLOCKS.register("chinensis_button",
             () -> new WoodButtonBlock(CHINENSIS_BUTTON_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_SIGN = BLOCKS.register("chinensis_sign",
+            () -> new ModStandingSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS_WOOD));
+
+    public static final RegistryObject<Block> CHINENSIS_WALL_SIGN = BLOCKS.register("chinensis_wall_sign",
+            () -> new ModWallSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS_WOOD));
 
 
 
