@@ -68,10 +68,10 @@ public class ModBlocks {
             () -> new WoodButtonBlock(CHINENSIS_BUTTON_PROPERTIES));
 
     public static final RegistryObject<Block> CHINENSIS_SIGN = BLOCKS.register("chinensis_sign",
-            () -> new ModStandingSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS_WOOD));
+            () -> new ModStandingSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS));
 
     public static final RegistryObject<Block> CHINENSIS_WALL_SIGN = BLOCKS.register("chinensis_wall_sign",
-            () -> new ModWallSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS_WOOD));
+            () -> new ModWallSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS));
 
 
 

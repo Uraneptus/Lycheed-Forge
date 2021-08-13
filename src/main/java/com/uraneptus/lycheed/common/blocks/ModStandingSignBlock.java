@@ -8,6 +8,8 @@ import net.minecraft.block.WoodType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
 
+import javax.annotation.Nullable;
+
 public class ModStandingSignBlock extends StandingSignBlock {
 
     public ModStandingSignBlock(AbstractBlock.Properties properties, WoodType type) {
@@ -19,6 +21,7 @@ public class ModStandingSignBlock extends StandingSignBlock {
         return true;
     }
 
+    @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader blockReader) {
         return new ModSignTileEntity();

@@ -6,8 +6,13 @@ import net.minecraft.tileentity.TileEntityType;
 
 public class ModSignTileEntity extends SignTileEntity {
 
-    @Override
-    public TileEntityType<?> getType() {
-        return ModTileEntityTypes.MOD_SIGN.get();
-    }
+
+    /*public ModSignTileEntity() {
+        super(ModTileEntityTypes.MOD_SIGN);
+    }*/
+
+   @Override
+   public TileEntityType<?> getType() {
+       return ModTileEntityTypes.MOD_SIGN.get();
+      }
 }

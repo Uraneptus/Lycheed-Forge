@@ -14,15 +14,15 @@ import static net.minecraft.client.renderer.Atlases.SIGN_SHEET;
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModWoodTypes {
 
-    public static final WoodType CHINENSIS_WOOD = new ModWoodType("chinensis_wood");
+    public static final WoodType CHINENSIS = new ModWoodType("chinensis");
 
     @SubscribeEvent
     public static void setRenderLayer(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> addWoodType(CHINENSIS_WOOD));
+        event.enqueueWork(() -> addWoodType(CHINENSIS));
     }
 
     public static void addWoodType(WoodType woodType) {
-        SIGN_MATERIALS.put(woodType, new RenderMaterial(SIGN_SHEET, new ResourceLocation(LycheedMod.MOD_ID, "entity/sign/" + woodType.name())));
+        SIGN_MATERIALS.put(woodType, new RenderMaterial(SIGN_SHEET, new ResourceLocation(LycheedMod.MOD_ID, "entity/signs/" + woodType.name())));
     }
 
 

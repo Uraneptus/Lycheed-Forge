@@ -20,6 +20,7 @@ public class ModWallSignBlock extends WallSignBlock {
         return true;
     }
 
+    @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader blockReader) {
         return new ModSignTileEntity();

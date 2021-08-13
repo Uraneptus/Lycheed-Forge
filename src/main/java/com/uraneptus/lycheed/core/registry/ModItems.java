@@ -71,6 +71,9 @@ public class ModItems {
     public static final RegistryObject<BlockItem> CHINENSIS_BUTTON = ITEMS.register("chinensis_button",
             ()-> new BlockItem(ModBlocks.CHINENSIS_BUTTON.get(), REDSTONE));
 
+    public static final RegistryObject<BlockItem> CHINENSIS_SIGN = ITEMS.register("chinensis_sign",
+            () -> new SignItem(DECORATION_BLOCKS.stacksTo(16), ModBlocks.CHINENSIS_SIGN.get(), ModBlocks.CHINENSIS_WALL_SIGN.get()));
+
 
 
 

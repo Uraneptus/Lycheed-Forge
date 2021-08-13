@@ -2,6 +2,7 @@ package com.uraneptus.lycheed;
 
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import com.uraneptus.lycheed.core.registry.ModItems;
+import com.uraneptus.lycheed.core.registry.ModTileEntityTypes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +24,7 @@ public class LycheedMod
 
         ModItems.ITEMS.register(event_bus);
         ModBlocks.BLOCKS.register(event_bus);
+        ModTileEntityTypes.TILE_ENTITIES.register(event_bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
