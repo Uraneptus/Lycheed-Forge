@@ -74,6 +74,12 @@ public class ModItems {
     public static final RegistryObject<BlockItem> CHINENSIS_SIGN = ITEMS.register("chinensis_sign",
             () -> new SignItem(DECORATION_BLOCKS.stacksTo(16), ModBlocks.CHINENSIS_SIGN.get(), ModBlocks.CHINENSIS_WALL_SIGN.get()));
 
+    public static final RegistryObject<BlockItem> CHINENSIS_LEAVES = ITEMS.register("chinensis_leaves",
+            () -> new BlockItem(ModBlocks.CHINENSIS_LEAVES.get(), DECORATION_BLOCKS));
+
+    public static final RegistryObject<BlockItem> FRUITFUL_CHINENSIS_LEAVES = ITEMS.register("fruitful_chinensis_leaves",
+            () -> new BlockItem(ModBlocks.FRUITFUL_CHINENSIS_LEAVES.get(), DECORATION_BLOCKS));
+
 
 
 

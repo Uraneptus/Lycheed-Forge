@@ -1,14 +1,14 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
-import com.uraneptus.lycheed.common.blocks.ModLogBlock;
-import com.uraneptus.lycheed.common.blocks.ModStandingSignBlock;
-import com.uraneptus.lycheed.common.blocks.ModWallSignBlock;
-import com.uraneptus.lycheed.common.blocks.ModWoodBlock;
+import com.uraneptus.lycheed.common.blocks.*;
 import com.uraneptus.lycheed.core.ModWoodTypes;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final AbstractBlock.Properties CHINENSIS_BUTTON_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD).noCollission();
     public static final AbstractBlock.Properties CHINENSIS_PRESSURE_PLATE_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD).noCollission();
     public static final AbstractBlock.Properties CHINENSIS_SIGN_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(2.0F).sound(SoundType.WOOD).noCollission().noOcclusion();
-
+    public static final AbstractBlock.Properties CHINENSIS_LEAVES_PROPERTIES = AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).harvestTool(ToolType.HOE).noOcclusion().strength(0.2F).randomTicks().sound(SoundType.GRASS).isValidSpawn(ModBlocks::allowsSpawnOnLeaves).isSuffocating(ModBlocks::isntSolid).isViewBlocking(ModBlocks::isntSolid);
 
 
 
@@ -73,6 +73,22 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHINENSIS_WALL_SIGN = BLOCKS.register("chinensis_wall_sign",
             () -> new ModWallSignBlock(CHINENSIS_SIGN_PROPERTIES, ModWoodTypes.CHINENSIS));
 
+    public static final RegistryObject<Block> CHINENSIS_LEAVES = BLOCKS.register("chinensis_leaves",
+            () -> new ModLeavesBlock(CHINENSIS_LEAVES_PROPERTIES));
+
+    public static final RegistryObject<Block> FRUITFUL_CHINENSIS_LEAVES = BLOCKS.register("fruitful_chinensis_leaves",
+            () -> new ModLeavesBlock(CHINENSIS_LEAVES_PROPERTIES));
+
+
+
+
+
+    public static boolean allowsSpawnOnLeaves(BlockState state, IBlockReader access, BlockPos pos, EntityType<?> entity) {
+        return entity == EntityType.OCELOT || entity == EntityType.PARROT;
+    }
+    public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
+        return false;
+    }
 
 
 }
