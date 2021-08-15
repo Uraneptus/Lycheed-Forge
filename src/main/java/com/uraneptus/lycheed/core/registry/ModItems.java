@@ -1,6 +1,8 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.common.entities.ModBoatEntity;
+import com.uraneptus.lycheed.common.items.ModBoatItem;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -27,12 +29,12 @@ public class ModItems {
                             .effect(() -> new EffectInstance(Effects.CONFUSION, 100, 1), 1.0F).build())));
 
     public static final RegistryObject<Item> CHINENSIS_BOAT = ITEMS.register("chinensis_boat",
-            () -> new BoatItem(BoatEntity.Type.OAK, (TRANSPORTATION.stacksTo(1))));
+            () -> new ModBoatItem((TRANSPORTATION.stacksTo(1)), ModEntities.CHINENSIS_BOAT));
 
 
 
     //BLOCK ITEMS
-    public static final RegistryObject<BlockItem> CHINENSIS_PLANKS = ITEMS.register("chinensis_planks",
+    public static final RegistryObject<Item> CHINENSIS_PLANKS = ITEMS.register("chinensis_planks",
             ()-> new BlockItem(ModBlocks.CHINENSIS_PLANKS.get(), BUILDING_BLOCKS));
 
     public static final RegistryObject<BlockItem> CHINENSIS_LOG = ITEMS.register("chinensis_log",
