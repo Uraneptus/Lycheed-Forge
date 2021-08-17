@@ -2,14 +2,16 @@ package com.uraneptus.lycheed.common.blocks;
 
 import com.uraneptus.lycheed.core.registry.ModItems;
 import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -167,6 +169,22 @@ public class ModBranchBlock extends Block implements IGrowable {
     @Override
     public ItemStack getCloneItemStack(IBlockReader p_185473_1_, BlockPos p_185473_2_, BlockState p_185473_3_) {
         return new ItemStack(this.getBaseSeedId());
+    }
+
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+        int i = state.getValue(AGE);
+        boolean flag = i == 5;
+        if (!flag && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
+            return ActionResultType.PASS;
+        } else if (i > 3) {
+            int j = 1 + world.random.nextInt(2);
+            popResource(world, pos, new ItemStack(ModItems.LYCHEE.get(), j + (flag ? 1 : 0)));
+            world.playSound((PlayerEntity)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.setBlock(pos, state.setValue(AGE, Integer.valueOf(2)), 3);
+            return ActionResultType.sidedSuccess(world.isClientSide);
+        } else {
+            return super.use(state, world, pos, player, hand, result);
+        }
     }
 
     @Override
