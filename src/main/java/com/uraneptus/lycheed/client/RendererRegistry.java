@@ -2,8 +2,11 @@ package com.uraneptus.lycheed.client;
 
 import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.client.entities.ModBoatRenderer;
+import com.uraneptus.lycheed.core.registry.ModBlocks;
 import com.uraneptus.lycheed.core.registry.ModEntities;
 import com.uraneptus.lycheed.core.registry.ModTileEntityTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,5 +26,10 @@ public class RendererRegistry {
     @SubscribeEvent
     public static void registerEntityRenderer(FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.CHINENSIS_BOAT.get(), ModBoatRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void setBlockRenderTypes(FMLClientSetupEvent event) {
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_BRANCH.get(), RenderType.cutout());
     }
 }

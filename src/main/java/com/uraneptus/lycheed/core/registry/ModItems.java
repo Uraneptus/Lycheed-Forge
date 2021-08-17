@@ -22,7 +22,7 @@ public class ModItems {
 
     //FOOD
     public static final RegistryObject<Item> LYCHEE = ITEMS.register("lychee",
-            () -> new Item(FOOD.food(new Food.Builder().nutrition(5).saturationMod(0.9F).build())));
+            () -> new BlockNamedItem(ModBlocks.CHINENSIS_BRANCH.get(), FOOD.food(new Food.Builder().nutrition(5).saturationMod(0.9F).build())));
 
     public static final RegistryObject<Item> ROTTEN_LYCHEE = ITEMS.register("rotten_lychee",
             () -> new Item(FOOD.food(new Food.Builder().nutrition(2).saturationMod(0.4F)

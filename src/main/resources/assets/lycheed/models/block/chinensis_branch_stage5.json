@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "lycheed:block/chinensis_branch_stage5"
+  }
+}
