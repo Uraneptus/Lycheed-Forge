@@ -25,6 +25,7 @@ public class ModBlocks {
     public static final AbstractBlock.Properties CHINENSIS_SIGN_PROPERTIES = AbstractBlock.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(2.0F).sound(SoundType.WOOD).noCollission().noOcclusion();
     public static final AbstractBlock.Properties CHINENSIS_LEAVES_PROPERTIES = AbstractBlock.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).harvestTool(ToolType.HOE).noOcclusion().strength(0.2F).randomTicks().sound(SoundType.GRASS).isValidSpawn(ModBlocks::allowsSpawnOnLeaves).isSuffocating(ModBlocks::isntSolid).isViewBlocking(ModBlocks::isntSolid);
     public static final AbstractBlock.Properties CHINENSIS_BRANCH_PROPERTIES = AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().randomTicks().instabreak().sound(SoundType.CROP);
+    public static final AbstractBlock.Properties LYCHEE_BASKET_PROPERTIES = AbstractBlock.Properties.of(Material.WOOL, MaterialColor.COLOR_RED);
 
 
 
@@ -81,6 +82,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHINENSIS_BRANCH = BLOCKS.register("chinensis_branch",
             () -> new ModBranchBlock(CHINENSIS_BRANCH_PROPERTIES));
+
+    public static final RegistryObject<Block> LYCHEE_BASKET = BLOCKS.register("lychee_basket",
+            () -> new Block(LYCHEE_BASKET_PROPERTIES));
 
 
 

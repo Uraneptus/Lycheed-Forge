@@ -82,6 +82,9 @@ public class ModItems {
     public static final RegistryObject<BlockItem> FRUITFUL_CHINENSIS_LEAVES = ITEMS.register("fruitful_chinensis_leaves",
             () -> new BlockItem(ModBlocks.FRUITFUL_CHINENSIS_LEAVES.get(), DECORATION_BLOCKS));
 
+    public static final RegistryObject<BlockItem> LYCHEE_BASKET = ITEMS.register("lychee_basket",
+            () -> new BlockItem(ModBlocks.LYCHEE_BASKET.get(), DECORATION_BLOCKS));
+
 
 
 
