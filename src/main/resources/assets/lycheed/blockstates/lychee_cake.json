@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "lychee_cake_bites=0": {
+      "model": "lycheed:block/lychee_cake"
+    },
+    "lychee_cake_bites=1": {
+      "model": "lycheed:block/lychee_cake_slice1"
+    },
+    "lychee_cake_bites=2": {
+      "model": "lycheed:block/lychee_cake_slice2"
+    },
+    "lychee_cake_bites=3": {
+      "model": "lycheed:block/lychee_cake_slice3"
+    },
+    "lychee_cake_bites=4": {
+      "model": "lycheed:block/lychee_cake_slice4"
+    }
+  }
+}

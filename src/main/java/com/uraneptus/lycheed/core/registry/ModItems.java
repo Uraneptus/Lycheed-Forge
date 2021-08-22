@@ -22,10 +22,11 @@ public class ModItems {
 
     //FOOD
     public static final RegistryObject<Item> LYCHEE = ITEMS.register("lychee",
-            () -> new BlockNamedItem(ModBlocks.CHINENSIS_BRANCH.get(), FOOD.food(new Food.Builder().nutrition(5).saturationMod(0.9F).build())));
+            () -> new BlockNamedItem(ModBlocks.CHINENSIS_BRANCH.get(), new Item.Properties().tab(ItemGroup.TAB_FOOD)
+                    .food(new Food.Builder().nutrition(5).saturationMod(0.9F).build())));
 
     public static final RegistryObject<Item> ROTTEN_LYCHEE = ITEMS.register("rotten_lychee",
-            () -> new Item(FOOD.food(new Food.Builder().nutrition(2).saturationMod(0.4F)
+            () -> new Item(new Item.Properties().tab(ItemGroup.TAB_FOOD).food(new Food.Builder().nutrition(2).saturationMod(0.4F)
                             .effect(() -> new EffectInstance(Effects.CONFUSION, 100, 1), 1.0F).build())));
 
     public static final RegistryObject<Item> CHINENSIS_BOAT = ITEMS.register("chinensis_boat",
@@ -84,6 +85,9 @@ public class ModItems {
 
     public static final RegistryObject<BlockItem> LYCHEE_BASKET = ITEMS.register("lychee_basket",
             () -> new BlockItem(ModBlocks.LYCHEE_BASKET.get(), DECORATION_BLOCKS));
+
+    public static final RegistryObject<BlockItem> LYCHEE_CAKE = ITEMS.register("lychee_cake",
+            () -> new BlockNamedItem(ModBlocks.LYCHEE_CAKE.get(), FOOD));
 
 
 
