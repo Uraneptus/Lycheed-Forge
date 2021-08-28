@@ -66,6 +66,12 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+    }
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 

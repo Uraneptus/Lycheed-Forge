@@ -7,6 +7,7 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -88,6 +89,9 @@ public class ModItems {
 
     public static final RegistryObject<BlockItem> LYCHEE_CAKE = ITEMS.register("lychee_cake",
             () -> new BlockNamedItem(ModBlocks.LYCHEE_CAKE.get(), FOOD));
+
+    public static final RegistryObject<BlockItem> CHINENSIS_BEEHIVE = ITEMS.register("chinensis_beehive",
+            () -> new BlockItem(ModBlocks.CHINENSIS_BEEHIVE.get(), new Item.Properties().tab(!ModList.get().isLoaded("buzzier_bees") ? null : ItemGroup.TAB_DECORATIONS)));
 
 
 

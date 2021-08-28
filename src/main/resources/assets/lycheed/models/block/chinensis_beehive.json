@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "lycheed:block/chinensis_beehive_end",
+    "bottom": "lycheed:block/chinensis_beehive_end",
+    "side": "lycheed:block/chinensis_beehive_side",
+    "front": "lycheed:block/chinensis_beehive_front",
+    "particle": "lycheed:block/chinensis_beehive_side"
+  }
+}

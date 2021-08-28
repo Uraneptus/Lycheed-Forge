@@ -1,8 +1,10 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.common.blocks.ModBeehiveBlock;
 import com.uraneptus.lycheed.common.blocks.ModStandingSignBlock;
 import com.uraneptus.lycheed.common.blocks.ModWallSignBlock;
+import com.uraneptus.lycheed.common.entities.tile.ModBeehiveTileEntity;
 import com.uraneptus.lycheed.common.entities.tile.ModSignTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -22,6 +24,9 @@ public class ModTileEntityTypes {
 
     public static final RegistryObject<TileEntityType<ModSignTileEntity>> MOD_SIGN = TILE_ENTITIES.register("mod_sign",
             () -> TileEntityType.Builder.of(ModSignTileEntity::new, getModBlocks(ModWallSignBlock.class, ModStandingSignBlock.class)).build(null));
+
+    public static final RegistryObject<TileEntityType<ModBeehiveTileEntity>> MOD_BEEHIVE = TILE_ENTITIES.register("mod_beehive",
+            () -> TileEntityType.Builder.of(ModBeehiveTileEntity::new, getModBlocks(ModBeehiveBlock.class)).build(null));
 
 
 
