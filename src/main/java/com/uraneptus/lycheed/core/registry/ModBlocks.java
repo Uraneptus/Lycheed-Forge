@@ -1,6 +1,7 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.ModIntegrations;
 import com.uraneptus.lycheed.common.blocks.*;
 import com.uraneptus.lycheed.core.ModWoodTypes;
 import net.minecraft.block.*;
@@ -10,9 +11,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import vectorwing.farmersdelight.blocks.PantryBlock;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LycheedMod.MOD_ID);
@@ -28,6 +31,8 @@ public class ModBlocks {
     public static final AbstractBlock.Properties LYCHEE_BASKET_PROPERTIES = AbstractBlock.Properties.of(Material.WOOL, MaterialColor.COLOR_RED);
     public static final AbstractBlock.Properties LYCHEE_CAKE_PROPERTIES = AbstractBlock.Properties.of(Material.CAKE).strength(0.5F).sound(SoundType.WOOL);
     public static final AbstractBlock.Properties CHINENSIS_BEEHIVE_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BEEHIVE);
+    public static final AbstractBlock.Properties CHINENSIS_PANTRY_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BARREL);
+
 
 
 
@@ -93,6 +98,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHINENSIS_BEEHIVE = BLOCKS.register("chinensis_beehive",
             () -> new ModBeehiveBlock(CHINENSIS_BEEHIVE_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_PANTRY = BLOCKS.register("chinensis_pantry",
+            () -> !ModList.get().isLoaded("farmersdelight") ? new Block(CHINENSIS_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(CHINENSIS_PANTRY_PROPERTIES));
 
 
 

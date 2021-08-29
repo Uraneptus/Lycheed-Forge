@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "side": "lycheed:block/chinensis_pantry_side",
+    "front": "lycheed:block/chinensis_pantry_front_open",
+    "top": "lycheed:block/chinensis_pantry_end"
+  }
+}

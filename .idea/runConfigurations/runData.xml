@@ -2,7 +2,7 @@
 <component>
   <configuration default="false" factoryName="Application" name="runData" singleton="false" type="Application">
     <option name="MAIN_CLASS_NAME" value="net.minecraftforge.userdev.LaunchTesting"/>
-    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES -XX:+IgnoreUnrecognizedVMOptions --add-exports=java.base/sun.security.util=ALL-UNNAMED --add-exports=jdk.naming.dns/com.sun.jndi.dns=java.naming --add-opens=java.base/java.util.jar=ALL-UNNAMED"/>
+    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES -Dmixin.env.remapRefMap=true -Dmixin.env.refMapRemappingFile=D:\Minecraft\Modding\Modding\Lycheed-Forge-1.16.5/build/createSrgToMcp/output.srg -XX:+IgnoreUnrecognizedVMOptions --add-exports=java.base/sun.security.util=ALL-UNNAMED --add-exports=jdk.naming.dns/com.sun.jndi.dns=java.naming --add-opens=java.base/java.util.jar=ALL-UNNAMED"/>
     <option name="PROGRAM_PARAMETERS" value="--mod examplemod --all --output D:\Minecraft\Modding\Modding\Lycheed-Forge-1.16.5\src\generated\resources --existing D:\Minecraft\Modding\Modding\Lycheed-Forge-1.16.5\src\main\resources"/>
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$\run"/>
     <module name="Lycheed-Forge-1.16.5.main"/>

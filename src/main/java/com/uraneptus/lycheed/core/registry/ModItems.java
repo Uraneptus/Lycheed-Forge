@@ -1,6 +1,7 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.ModIntegrations;
 import com.uraneptus.lycheed.common.entities.ModBoatEntity;
 import com.uraneptus.lycheed.common.items.ModBoatItem;
 import net.minecraft.entity.item.BoatEntity;
@@ -92,6 +93,9 @@ public class ModItems {
 
     public static final RegistryObject<BlockItem> CHINENSIS_BEEHIVE = ITEMS.register("chinensis_beehive",
             () -> new BlockItem(ModBlocks.CHINENSIS_BEEHIVE.get(), new Item.Properties().tab(!ModList.get().isLoaded("buzzier_bees") ? null : ItemGroup.TAB_DECORATIONS)));
+
+    public static final RegistryObject<BlockItem> CHINENSIS_PANTRY = ITEMS.register("chinensis_pantry",
+            () -> new BlockItem(ModBlocks.CHINENSIS_PANTRY.get(), new Item.Properties().tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
 
 
 
