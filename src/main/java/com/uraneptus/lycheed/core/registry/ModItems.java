@@ -34,7 +34,11 @@ public class ModItems {
     public static final RegistryObject<Item> CHINENSIS_BOAT = ITEMS.register("chinensis_boat",
             () -> new ModBoatItem((TRANSPORTATION.stacksTo(1)), ModEntities.CHINENSIS_BOAT));
 
-
+    public static final RegistryObject<Item> LYCHEE_CAKE_SLICE = ITEMS.register("lychee_cake_slice",
+            () -> new Item(new Item.Properties()
+                    .food(new Food.Builder().nutrition(2).saturationMod(0.1F).fast().effect(
+                            () -> new EffectInstance(Effects.MOVEMENT_SPEED, 1200, 0), 1.0F).build())
+                        .tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
 
     //BLOCK ITEMS
     public static final RegistryObject<Item> CHINENSIS_PLANKS = ITEMS.register("chinensis_planks",
@@ -96,6 +100,8 @@ public class ModItems {
 
     public static final RegistryObject<BlockItem> CHINENSIS_PANTRY = ITEMS.register("chinensis_pantry",
             () -> new BlockItem(ModBlocks.CHINENSIS_PANTRY.get(), new Item.Properties().tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
+
+
 
 
 
