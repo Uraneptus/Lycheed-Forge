@@ -18,7 +18,7 @@ public class ModRegistryEvents {
     public static void registerPOI(RegistryEvent.Register<PointOfInterestType> event) {
         ResourceLocation beePOILocation = new ResourceLocation("minecraft:bee_nest");
         PointOfInterestType beePOI = ForgeRegistries.POI_TYPES.getValue(beePOILocation);
-        HashSet<BlockState> newSet = new HashSet<>();
+        HashSet<BlockState> newSet = new HashSet<>(beePOI.getBlockStates());
         newSet.add(ModBlocks.CHINENSIS_BEEHIVE.get().defaultBlockState());
         //PointOfInterestType newBeePOIToRegister = new PointOfInterestType("mod_beehive", newSet, beePOI.getValidRange(), beePOI.getMaxTickets());
         event.getRegistry().register(new PointOfInterestType("bee_nest", newSet, beePOI.getValidRange(), beePOI.getMaxTickets()));

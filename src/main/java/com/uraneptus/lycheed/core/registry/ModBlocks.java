@@ -34,6 +34,7 @@ public class ModBlocks {
     public static final AbstractBlock.Properties CHINENSIS_PANTRY_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BARREL);
     public static final AbstractBlock.Properties CHINENSIS_LADDER_PROPERTIES = AbstractBlock.Properties.of(Material.DECORATION).noOcclusion().harvestTool(ToolType.AXE).strength(0.4F).sound(SoundType.LADDER);
     public static final AbstractBlock.Properties CHINENSIS_BOOKSHELF_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BOOKSHELF);
+    public static final AbstractBlock.Properties CHINENSIS_LEAVES_CARPET_PROPERTIES = AbstractBlock.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.GRASS).harvestTool(ToolType.HOE).noOcclusion();
 
 
     public static final RegistryObject<Block> CHINENSIS_PLANKS = BLOCKS.register("chinensis_planks",
@@ -110,6 +111,12 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VERTICAL_CHINENSIS_PLANKS = BLOCKS.register("vertical_chinensis_planks",
             () -> new Block(CHINENSIS_PLANKS_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_LEAVES_CARPET = BLOCKS.register("chinensis_leaves_carpet",
+            () -> new ModLeafCarpetBlock(CHINENSIS_LEAVES_CARPET_PROPERTIES));
+
+    public static final RegistryObject<Block> FRUITFUL_CHINENSIS_LEAVES_CARPET = BLOCKS.register("fruitful_chinensis_leaves_carpet",
+            () -> new ModLeafCarpetBlock(CHINENSIS_LEAVES_CARPET_PROPERTIES));
 
 
 

@@ -32,5 +32,9 @@ public class RendererRegistry {
     public static void setBlockRenderTypes(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_BRANCH.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LADDER.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.FRUITFUL_CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
+
+
     }
 }

@@ -110,6 +110,11 @@ public class ModItems {
     public static final RegistryObject<BlockItem> VERTICAL_CHINENSIS_PLANKS = ITEMS.register("vertical_chinensis_planks",
             () -> new BlockItem(ModBlocks.VERTICAL_CHINENSIS_PLANKS.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_BUILDING_BLOCKS)));
 
+    public static final RegistryObject<BlockItem> CHINENSIS_LEAVES_CARPET = ITEMS.register("chinensis_leaves_carpet",
+            () -> new BlockItem(ModBlocks.CHINENSIS_LEAVES_CARPET.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_DECORATIONS)));
+
+    public static final RegistryObject<BlockItem> FRUITFUL_CHINENSIS_LEAVES_CARPET = ITEMS.register("fruitful_chinensis_leaves_carpet",
+            () -> new BlockItem(ModBlocks.FRUITFUL_CHINENSIS_LEAVES_CARPET.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_DECORATIONS)));
 
 
 
