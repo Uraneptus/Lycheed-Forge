@@ -31,5 +31,6 @@ public class RendererRegistry {
     @SubscribeEvent
     public static void setBlockRenderTypes(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_BRANCH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LADDER.get(), RenderType.cutout());
     }
 }

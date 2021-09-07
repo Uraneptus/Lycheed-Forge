@@ -101,6 +101,14 @@ public class ModItems {
     public static final RegistryObject<BlockItem> CHINENSIS_PANTRY = ITEMS.register("chinensis_pantry",
             () -> new BlockItem(ModBlocks.CHINENSIS_PANTRY.get(), new Item.Properties().tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
 
+    public static final RegistryObject<BlockItem> CHINENSIS_LADDER = ITEMS.register("chinensis_ladder",
+            () -> new BlockItem(ModBlocks.CHINENSIS_LADDER.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_DECORATIONS)));
+
+    public static final RegistryObject<BlockItem> CHINENSIS_BOOKSHELF = ITEMS.register("chinensis_bookshelf",
+            () -> new BlockItem(ModBlocks.CHINENSIS_BOOKSHELF.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_DECORATIONS)));
+
+    public static final RegistryObject<BlockItem> VERTICAL_CHINENSIS_PLANKS = ITEMS.register("vertical_chinensis_planks",
+            () -> new BlockItem(ModBlocks.VERTICAL_CHINENSIS_PLANKS.get(), new Item.Properties().tab(!ModList.get().isLoaded("quark") ? null : ItemGroup.TAB_BUILDING_BLOCKS)));
 
 
 

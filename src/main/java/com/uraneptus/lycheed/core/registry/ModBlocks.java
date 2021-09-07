@@ -32,8 +32,8 @@ public class ModBlocks {
     public static final AbstractBlock.Properties LYCHEE_CAKE_PROPERTIES = AbstractBlock.Properties.of(Material.CAKE).strength(0.5F).sound(SoundType.WOOL);
     public static final AbstractBlock.Properties CHINENSIS_BEEHIVE_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BEEHIVE);
     public static final AbstractBlock.Properties CHINENSIS_PANTRY_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BARREL);
-
-
+    public static final AbstractBlock.Properties CHINENSIS_LADDER_PROPERTIES = AbstractBlock.Properties.of(Material.DECORATION).noOcclusion().harvestTool(ToolType.AXE).strength(0.4F).sound(SoundType.LADDER);
+    public static final AbstractBlock.Properties CHINENSIS_BOOKSHELF_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BOOKSHELF);
 
 
     public static final RegistryObject<Block> CHINENSIS_PLANKS = BLOCKS.register("chinensis_planks",
@@ -101,6 +101,15 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHINENSIS_PANTRY = BLOCKS.register("chinensis_pantry",
             () -> !ModList.get().isLoaded("farmersdelight") ? new Block(CHINENSIS_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(CHINENSIS_PANTRY_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_LADDER = BLOCKS.register("chinensis_ladder",
+            () -> new ModLadderBlock(CHINENSIS_LADDER_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_BOOKSHELF = BLOCKS.register("chinensis_bookshelf",
+            () -> new ModBookshelfBlock(CHINENSIS_BOOKSHELF_PROPERTIES));
+
+    public static final RegistryObject<Block> VERTICAL_CHINENSIS_PLANKS = BLOCKS.register("vertical_chinensis_planks",
+            () -> new Block(CHINENSIS_PLANKS_PROPERTIES));
 
 
 
