@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -31,15 +32,4 @@ public class ModBeehiveBlock extends BeehiveBlock {
     public TileEntity createTileEntity(BlockState state, IBlockReader blockReader) {
         return new ModBeehiveTileEntity();
     }
-
-    @SubscribeEvent
-    public static void registerPOI(RegistryEvent.Register<PointOfInterestType> event) {
-        ResourceLocation beePOILocation = new ResourceLocation("minecraft:bee_nest");
-        PointOfInterestType beePOI = ForgeRegistries.POI_TYPES.getValue(beePOILocation);
-        HashSet<BlockState> newSet = new HashSet<>(beePOI.getBlockStates());
-        newSet.add(ModBlocks.CHINENSIS_BEEHIVE.get().defaultBlockState());
-        PointOfInterestType newBeePOIToRegister = new PointOfInterestType("bee_nest", newSet, beePOI.getValidRange(), beePOI.getMaxTickets());
-        event.getRegistry().register(newBeePOIToRegister);
-    }
-
 }

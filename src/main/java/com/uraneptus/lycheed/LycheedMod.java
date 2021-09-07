@@ -1,5 +1,6 @@
 package com.uraneptus.lycheed;
 
+import com.uraneptus.lycheed.common.blocks.ModBeehiveBlock;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import com.uraneptus.lycheed.core.registry.ModEntities;
 import com.uraneptus.lycheed.core.registry.ModItems;
