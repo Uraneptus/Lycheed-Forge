@@ -118,6 +118,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> FRUITFUL_CHINENSIS_LEAVES_CARPET = BLOCKS.register("fruitful_chinensis_leaves_carpet",
             () -> new ModLeafCarpetBlock(CHINENSIS_LEAVES_CARPET_PROPERTIES));
 
+    public static final RegistryObject<Block> STRIPPED_CHINENSIS_POST = BLOCKS.register("stripped_chinensis_post",
+            () -> new ModLeafCarpetBlock(CHINENSIS_PLANKS_PROPERTIES));
+
+    public static final RegistryObject<Block> CHINENSIS_POST = BLOCKS.register("chinensis_post",
+            () -> new ModLeafCarpetBlock(CHINENSIS_PLANKS_PROPERTIES));
+
 
 
 

@@ -23,26 +23,10 @@ public class ModTileEntityTypes {
 
 
     public static final RegistryObject<TileEntityType<ModSignTileEntity>> MOD_SIGN = TILE_ENTITIES.register("mod_sign",
-            () -> TileEntityType.Builder.of(ModSignTileEntity::new, getModBlocks(ModWallSignBlock.class, ModStandingSignBlock.class)).build(null));
+            () -> TileEntityType.Builder.of(ModSignTileEntity::new, LycheedMod.ModHelper.getModBlocks(ModWallSignBlock.class, ModStandingSignBlock.class)).build(null));
 
     public static final RegistryObject<TileEntityType<ModBeehiveTileEntity>> MOD_BEEHIVE = TILE_ENTITIES.register("mod_beehive",
-            () -> TileEntityType.Builder.of(ModBeehiveTileEntity::new, getModBlocks(ModBeehiveBlock.class)).build(null));
-
-
-
-    public static Block[] getModBlocks(Class<?>... blockClasses)
-    {
-        Collection<RegistryObject<Block>> blocks = ModBlocks.BLOCKS.getEntries();
-        ArrayList<Block> matchingBlocks = new ArrayList<>();
-        for (RegistryObject<Block> registryObject : blocks)
-        {
-            if (Arrays.stream(blockClasses).anyMatch(b -> b.isInstance(registryObject.get())))
-            {
-                matchingBlocks.add(registryObject.get());
-            }
-        }
-        return matchingBlocks.toArray(new Block[0]);
-    }
+            () -> TileEntityType.Builder.of(ModBeehiveTileEntity::new, LycheedMod.ModHelper.getModBlocks(ModBeehiveBlock.class)).build(null));
 
 
 }
