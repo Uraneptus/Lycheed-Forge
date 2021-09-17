@@ -8,7 +8,6 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
-import net.minecraft.state.Property;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -19,19 +18,15 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-/**
- * Code from Quark:
- * https://github.com/VazkiiMods/Quark/blob/master/src/main/java/vazkii/quark/content/building/block/WoodPostBlock.java
- * @Author Vazkii
- */
+import java.util.function.Supplier;
 
 public class ModWoodPostBlock extends Block implements IWaterLoggable {
     private static final VoxelShape SHAPE_X = Block.box(0F, 6F, 6F, 16F, 10F, 10F);
     private static final VoxelShape SHAPE_Y = Block.box(6F, 0F, 6F, 10F, 16F, 10F);
     private static final VoxelShape SHAPE_Z = Block.box(6F, 6F, 0F, 10F, 10F, 16F);
-
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
+    private final Supplier<Block> block;
 
     public static final BooleanProperty[] CHAINED = new BooleanProperty[] {
             BooleanProperty.create("chain_down"),
@@ -42,27 +37,27 @@ public class ModWoodPostBlock extends Block implements IWaterLoggable {
             BooleanProperty.create("chain_east")
     };
 
-    public Block strippedBlock = null;
 
     public ModWoodPostBlock(Properties properties) {
+        this((Supplier) null, properties);
+    }
+
+    public ModWoodPostBlock(Supplier<Block> stripped, Properties properties) {
         super(properties);
+        this.block = stripped;
         BlockState state = stateDefinition.any().setValue(WATERLOGGED, false).setValue(AXIS, Direction.Axis.Y);
         for(BooleanProperty prop : CHAINED)
             state = state.setValue(prop, false);
         registerDefaultState(state);
     }
 
-    @Override
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+
     public BlockState getToolModifiedState(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack, ToolType toolType) {
-        if(strippedBlock == null || toolType != ToolType.AXE)
+        if (toolType == ToolType.AXE) {
+            return this.block != null ? block.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS)) : null;
+        } else {
             return super.getToolModifiedState(state, world, pos, player, stack, toolType);
-
-        BlockState newState = strippedBlock.defaultBlockState();
-        for(Property p : state.getProperties())
-            newState = newState.setValue(p, state.getValue(p));
-
-        return newState;
+        }
     }
 
     @Override
