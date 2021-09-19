@@ -2,10 +2,7 @@ package com.uraneptus.lycheed;
 
 import com.google.common.collect.Sets;
 import com.uraneptus.lycheed.common.blocks.ModBeehiveBlock;
-import com.uraneptus.lycheed.core.registry.ModBlocks;
-import com.uraneptus.lycheed.core.registry.ModEntities;
-import com.uraneptus.lycheed.core.registry.ModItems;
-import com.uraneptus.lycheed.core.registry.ModTileEntityTypes;
+import com.uraneptus.lycheed.core.registry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.village.PointOfInterestType;
@@ -40,6 +37,7 @@ public class LycheedMod
         ModBlocks.BLOCKS.register(event_bus);
         ModTileEntityTypes.TILE_ENTITIES.register(event_bus);
         ModEntities.ENTITY_TYPE.register(event_bus);
+        ModParticleType.PARTICLES.register(event_bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
