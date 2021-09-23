@@ -1,7 +1,7 @@
 package com.uraneptus.lycheed;
 
 import com.google.common.collect.Sets;
-import com.uraneptus.lycheed.common.blocks.ModBeehiveBlock;
+import com.minecraftabnormals.abnormals_core.core.util.registry.RegistryHelper;
 import com.uraneptus.lycheed.core.registry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,19 +20,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
-import java.util.stream.Stream;
 
 @Mod(LycheedMod.MOD_ID)
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LycheedMod
 {
-    private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "lycheed";
+    public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
 
     public LycheedMod() {
         IEventBus event_bus = FMLJavaModLoadingContext.get().getModEventBus();
         event_bus.addListener(this::setup);
 
+        REGISTRY_HELPER.register(event_bus);
         ModItems.ITEMS.register(event_bus);
         ModBlocks.BLOCKS.register(event_bus);
         ModTileEntityTypes.TILE_ENTITIES.register(event_bus);
@@ -43,10 +43,10 @@ public class LycheedMod
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(this::createNewBeehivePOI);
+
     }
 
-    private void createNewBeehivePOI() {
+    /*private void createNewBeehivePOI() {
         PointOfInterestType.BEEHIVE.matchingStates = Sets.newHashSet(PointOfInterestType.BEEHIVE.matchingStates);
         Map<BlockState, PointOfInterestType> blockStatePOIMap = ObfuscationReflectionHelper.getPrivateValue(PointOfInterestType.class, null, "field_221073_u");
         if (blockStatePOIMap != null) {
@@ -57,7 +57,7 @@ public class LycheedMod
                 });
             });
         }
-    }
+    }*/
 
     public static class ModHelper {
         public static Block[] getModBlocks(Class<?>... blockClasses)

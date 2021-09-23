@@ -1,17 +1,18 @@
-modLoader="javafml" #mandatory
-loaderVersion="[36,)" #mandatory
-license="GNU General Public License v3.0"
+modLoader = "javafml" #mandatory
+loaderVersion = "[36,)" #mandatory
+license = "GNU General Public License v3.0"
 
 [[mods]] #mandatory
-modId="lycheed" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="Lycheed" #mandatory
-displayURL="https://www.curseforge.com/members/thecraftyghost___/projects"
-logoFile="lycheed_banner.png" #optional
-credits="Idea and Textures by TheCraftyGhost, Code by Uraneptus, Banner by Nivolas" #optional
-authors="TheCraftyGhost, Uraneptus" #optional
-description='''
-'''
+    modId = "lycheed" #mandatory
+    version = "${file.jarVersion}" #mandatory
+    logoFile = "lycheed_banner.png" #optional
+    authors = "Uraneptus, TheCraftyGhost" #optional
+    credits = "Idea and Textures by TheCraftyGhost, Code by Uraneptus, Banner by Nivolas" #optional
+    displayURL = "https://www.curseforge.com/members/thecraftyghost___/projects"
+    displayName = "Lycheed" #mandatory
+    description = '''
+    Soon
+    '''
 
 [[dependencies.lycheed]] #optional
     modId="forge" #mandatory
@@ -25,6 +26,13 @@ description='''
     mandatory=true
     versionRange="[1.16.5,1.17)"
     ordering="NONE"
+    side="BOTH"
+
+[[dependencies.lycheed]]
+    modId="abnormals_core"
+    mandatory=true
+    versionRange="[3.3.0,)"
+    ordering="AFTER"
     side="BOTH"
 
 [modproperties.lycheed]

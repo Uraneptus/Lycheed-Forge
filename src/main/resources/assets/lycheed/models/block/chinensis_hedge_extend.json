@@ -1,0 +1,6 @@
+{
+  "parent": "abnormals_core:block/hedge_extend",
+  "textures": {
+    "leaf": "lycheed:block/chinensis_leaves"
+  }
+}

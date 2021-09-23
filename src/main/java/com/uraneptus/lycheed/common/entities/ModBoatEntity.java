@@ -1,5 +1,6 @@
 package com.uraneptus.lycheed.common.entities;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.BoatEntity;
@@ -16,9 +17,9 @@ import net.minecraftforge.fml.network.NetworkHooks;
 @SuppressWarnings("all")
 public class ModBoatEntity extends BoatEntity {
     private final RegistryObject<Item> boatItem;
-    private final RegistryObject<Item> plankItem;
+    private final RegistryObject<Block> plankItem;
 
-    public ModBoatEntity(EntityType entityType, World world, RegistryObject<Item> boatItem, RegistryObject<Item> planksItem) {
+    public ModBoatEntity(EntityType entityType, World world, RegistryObject<Item> boatItem, RegistryObject<Block> planksItem) {
         super(entityType, world);
         this.boatItem = boatItem;
         this.plankItem = planksItem;

@@ -34,6 +34,8 @@ public class RendererRegistry {
         RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LADDER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.FRUITFUL_CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_HEDGE.get(), RenderType.cutout());
+
 
 
     }

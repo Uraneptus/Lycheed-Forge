@@ -1,8 +1,8 @@
 package com.uraneptus.lycheed.common.blocks;
 
+import com.minecraftabnormals.abnormals_core.common.blocks.wood.AbnormalsLeavesBlock;
 import com.uraneptus.lycheed.core.registry.ModParticleType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -10,7 +10,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class ModLeavesBlock extends LeavesBlock {
+public class ModLeavesBlock extends AbnormalsLeavesBlock {
 
     public ModLeavesBlock(Properties properties) {
         super(properties);

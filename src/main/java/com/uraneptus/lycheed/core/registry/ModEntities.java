@@ -14,7 +14,7 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPE = DeferredRegister.create(ForgeRegistries.ENTITIES, LycheedMod.MOD_ID);
 
     public static final RegistryObject<EntityType<ModBoatEntity>> CHINENSIS_BOAT = ENTITY_TYPE.register("chinensis_boat",
-            () -> EntityType.Builder.<ModBoatEntity>of((entityType, world) -> new ModBoatEntity(entityType, world, ModItems.CHINENSIS_BOAT, ModItems.CHINENSIS_PLANKS), EntityClassification.MISC)
+            () -> EntityType.Builder.<ModBoatEntity>of((entityType, world) -> new ModBoatEntity(entityType, world, ModItems.CHINENSIS_BOAT, ModBlocks.CHINENSIS_PLANKS), EntityClassification.MISC)
                     .sized(1.375F, 0.5625F).clientTrackingRange(10)
                     .build(new ResourceLocation("chinensis").toString()));
 }

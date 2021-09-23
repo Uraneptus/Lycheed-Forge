@@ -51,10 +51,6 @@ public class ChinensisLeavesParticle extends SpriteTexturedParticle {
                     this.oRoll = this.roll = 0.0F;
                 }
             }
-
-            /*if (this.onGround) {
-                this.oRoll = this.roll = 0.0F;
-            }*/
         }
     }
 
