@@ -14,11 +14,11 @@ import static net.minecraft.client.renderer.Atlases.SIGN_SHEET;
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModWoodTypes {
 
-    public static final WoodType CHINENSIS = new ModWoodType("chinensis");
+    public static final WoodType LYCHEE = new ModWoodType("lychee");
 
     @SubscribeEvent
     public static void setRenderLayer(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> addWoodType(CHINENSIS));
+        event.enqueueWork(() -> addWoodType(LYCHEE));
     }
 
     public static void addWoodType(WoodType woodType) {

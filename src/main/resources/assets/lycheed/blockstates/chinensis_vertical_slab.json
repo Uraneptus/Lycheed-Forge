@@ -1,9 +1,0 @@
-{
-  "variants": {
-    "type=north": { "model": "lycheed:block/chinensis_vertical_slab", "y": 0, "uvlock": true },
-    "type=south": { "model": "lycheed:block/chinensis_vertical_slab", "y": 180, "uvlock": true },
-    "type=east": { "model": "lycheed:block/chinensis_vertical_slab", "y": 90, "uvlock": true },
-    "type=west": { "model": "lycheed:block/chinensis_vertical_slab", "y": 270, "uvlock": true },
-    "type=double": { "model": "lycheed:block/chinensis_planks" }
-  }
-}

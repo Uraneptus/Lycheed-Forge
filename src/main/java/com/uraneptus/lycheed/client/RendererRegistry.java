@@ -25,16 +25,16 @@ public class RendererRegistry {
 
     @SubscribeEvent
     public static void registerEntityRenderer(FMLClientSetupEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.CHINENSIS_BOAT.get(), ModBoatRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.LYCHEE_BOAT.get(), ModBoatRenderer::new);
     }
 
     @SubscribeEvent
     public static void setBlockRenderTypes(FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_BRANCH.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LADDER.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.FRUITFUL_CHINENSIS_LEAVES_CARPET.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.CHINENSIS_HEDGE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LYCHEE_BRANCH.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LYCHEE_LADDER.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LYCHEE_LEAVES_CARPET.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.FRUITFUL_LYCHEE_LEAVES_CARPET.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.LYCHEE_HEDGE.get(), RenderType.cutout());
 
 
 

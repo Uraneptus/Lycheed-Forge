@@ -1,0 +1,6 @@
+{
+  "parent": "abnormals_core:block/leaf_carpet",
+  "textures": {
+    "all": "lycheed:block/lychee_leaves"
+  }
+}

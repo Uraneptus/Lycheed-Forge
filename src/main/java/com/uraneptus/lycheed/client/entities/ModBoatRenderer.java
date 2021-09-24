@@ -12,7 +12,7 @@ public class ModBoatRenderer extends BoatRenderer {
 
     public ModBoatRenderer(EntityRendererManager rendererManager) {
         super(rendererManager);
-        boatTexture = new ResourceLocation(LycheedMod.MOD_ID, "textures/entity/boat/chinensis.png");
+        boatTexture = new ResourceLocation(LycheedMod.MOD_ID, "textures/entity/boat/lychee.png");
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.uraneptus.lycheed.common.blocks;
 
 import com.uraneptus.lycheed.core.registry.ModItems;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -19,10 +22,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.Tags;
 
 import java.util.Random;
-import java.util.function.Predicate;
 
 public class ModBranchBlock extends Block implements IGrowable {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_5;

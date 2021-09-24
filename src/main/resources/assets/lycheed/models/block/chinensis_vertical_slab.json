@@ -1,8 +1,0 @@
-{
-  "parent": "abnormals_core:block/vertical_slab",
-  "textures": {
-    "side": "lycheed:block/chinensis_planks",
-    "top": "lycheed:block/chinensis_planks",
-    "bottom": "lycheed:block/chinensis_planks"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "lycheed:block/stripped_chinensis_log_top",
-    "side": "lycheed:block/stripped_chinensis_log"
-  }
-}

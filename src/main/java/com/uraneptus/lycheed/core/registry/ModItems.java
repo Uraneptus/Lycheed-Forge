@@ -2,9 +2,7 @@ package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.ModIntegrations;
-import com.uraneptus.lycheed.common.entities.ModBoatEntity;
 import com.uraneptus.lycheed.common.items.ModBoatItem;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -23,15 +21,15 @@ public class ModItems {
     public static final Item.Properties TRANSPORTATION = new Item.Properties().tab(ItemGroup.TAB_TRANSPORTATION);
 
     public static final RegistryObject<Item> LYCHEE = ITEMS.register("lychee",
-            () -> new BlockItem(ModBlocks.CHINENSIS_BRANCH.get(), new Item.Properties().tab(ItemGroup.TAB_FOOD)
+            () -> new BlockItem(ModBlocks.LYCHEE_BRANCH.get(), new Item.Properties().tab(ItemGroup.TAB_FOOD)
                     .food(new Food.Builder().nutrition(5).saturationMod(0.9F).build())));
 
     public static final RegistryObject<Item> ROTTEN_LYCHEE = ITEMS.register("rotten_lychee",
             () -> new Item(new Item.Properties().tab(ItemGroup.TAB_FOOD).food(new Food.Builder().nutrition(2).saturationMod(0.4F)
                             .effect(() -> new EffectInstance(Effects.CONFUSION, 100, 1), 1.0F).build())));
 
-    public static final RegistryObject<Item> CHINENSIS_BOAT = ITEMS.register("chinensis_boat",
-            () -> new ModBoatItem((TRANSPORTATION.stacksTo(1)), ModEntities.CHINENSIS_BOAT));
+    public static final RegistryObject<Item> LYCHEE_BOAT = ITEMS.register("lychee_boat",
+            () -> new ModBoatItem((TRANSPORTATION.stacksTo(1)), ModEntities.LYCHEE_BOAT));
 
     public static final RegistryObject<Item> LYCHEE_CAKE_SLICE = ITEMS.register("lychee_cake_slice",
             () -> new Item(new Item.Properties()
@@ -43,8 +41,8 @@ public class ModItems {
     public static final RegistryObject<BlockItem> LYCHEE_CAKE = ITEMS.register("lychee_cake",
             () -> new BlockNamedItem(ModBlocks.LYCHEE_CAKE.get(), FOOD));
 
-    public static final RegistryObject<BlockItem> CHINENSIS_PANTRY = ITEMS.register("chinensis_pantry",
-            () -> new BlockItem(ModBlocks.CHINENSIS_PANTRY.get(), new Item.Properties().tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
+    public static final RegistryObject<BlockItem> LYCHEE_PANTRY = ITEMS.register("lychee_pantry",
+            () -> new BlockItem(ModBlocks.LYCHEE_PANTRY.get(), new Item.Properties().tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
 
 
 

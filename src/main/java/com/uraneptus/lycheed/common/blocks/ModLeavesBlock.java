@@ -26,7 +26,7 @@ public class ModLeavesBlock extends AbnormalsLeavesBlock {
                 double d3 = (double) ((float) pos.getX() + rand.nextFloat());
                 double d4 = (double) pos.getY() - 0.05D;
                 double d6 = (double) ((float) pos.getZ() + rand.nextFloat());
-                world.addParticle(ModParticleType.CHINENSIS_LEAVES_PARTICLE.get(), d3, d4, d6, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ModParticleType.LYCHEE_LEAVES_PARTICLE.get(), d3, d4, d6, 0.0D, 0.0D, 0.0D);
             }
         }
     }
