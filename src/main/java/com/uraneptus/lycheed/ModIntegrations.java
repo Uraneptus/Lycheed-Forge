@@ -7,7 +7,6 @@ import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.blocks.PantryBlock;
 
 public class ModIntegrations {
-
     public static Block getPantryBlock(AbstractBlock.Properties properties) {
         return new PantryBlock(properties);
     }
