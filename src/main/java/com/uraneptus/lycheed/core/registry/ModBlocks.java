@@ -23,11 +23,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.fml.common.Mod;
+import vectorwing.farmersdelight.FarmersDelight;
 
+@Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LycheedMod.MOD_ID);
     public static final BlockSubRegistryHelper HELPER = LycheedMod.REGISTRY_HELPER.getBlockSubHelper();
 
 
@@ -48,7 +48,7 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> LYCHEE_PLANKS = HELPER.createBlock("lychee_planks",
-        () -> new PlanksBlock(LYCHEE_PLANKS_PROPERTIES), ItemGroup.TAB_BUILDING_BLOCKS);
+            () -> new PlanksBlock(LYCHEE_PLANKS_PROPERTIES), ItemGroup.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> STRIPPED_LYCHEE_LOG = HELPER.createBlock("stripped_lychee_log",
             () -> new StrippedLogBlock(LYCHEE_LOG_PROPERTIES), ItemGroup.TAB_BUILDING_BLOCKS);
@@ -95,20 +95,20 @@ public class ModBlocks {
     public static final RegistryObject<Block> FRUITFUL_LYCHEE_LEAVES = HELPER.createBlock("fruitful_lychee_leaves",
             () -> new ModLeavesBlock(LYCHEE_LEAVES_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
-    public static final RegistryObject<Block> LYCHEE_BRANCH = BLOCKS.register("lychee_branch",
+    public static final RegistryObject<Block> LYCHEE_BRANCH = HELPER.createBlockNoItem("lychee_branch",
             () -> new ModBranchBlock(LYCHEE_BRANCH_PROPERTIES));
 
     public static final RegistryObject<Block> LYCHEE_BASKET = HELPER.createBlock("lychee_basket",
             () -> new Block(LYCHEE_BASKET_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
-    public static final RegistryObject<Block> LYCHEE_CAKE = BLOCKS.register("lychee_cake",
-            () -> new ModCakeBlock(LYCHEE_CAKE_PROPERTIES));
+    public static final RegistryObject<Block> LYCHEE_CAKE = HELPER.createBlock("lychee_cake",
+            () -> new ModCakeBlock(LYCHEE_CAKE_PROPERTIES), ItemGroup.TAB_FOOD);
 
     public static final RegistryObject<Block> LYCHEE_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "lychee_beehive",
             () -> new AbnormalsBeehiveBlock(LYCHEE_BEEHIVE_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
-    public static final RegistryObject<Block> LYCHEE_PANTRY = BLOCKS.register("lychee_pantry",
-            () -> !ModList.get().isLoaded("farmersdelight") ? new Block(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(LYCHEE_PANTRY_PROPERTIES));
+    public static final RegistryObject<Block> LYCHEE_PANTRY = HELPER.createBlock("lychee_pantry",
+            () -> !ModList.get().isLoaded("farmersdelight") ? new Block(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
 
     public static final RegistryObject<Block> LYCHEE_LADDER = HELPER.createCompatFuelBlock("quark", "lychee_ladder",
             () -> new AbnormalsLadderBlock(LYCHEE_LADDER_PROPERTIES), 300, ItemGroup.TAB_DECORATIONS);
@@ -140,19 +140,10 @@ public class ModBlocks {
     public static final Pair<RegistryObject<AbnormalsChestBlock>,
             RegistryObject<AbnormalsTrappedChestBlock>> LYCHEE_CHESTS = HELPER.createCompatChestBlocks("quark", "lychee", MaterialColor.COLOR_RED);
 
-
-
-
-
-
     public static boolean allowsSpawnOnLeaves(BlockState state, IBlockReader access, BlockPos pos, EntityType<?> entity) {
         return entity == EntityType.OCELOT || entity == EntityType.PARROT;
     }
     public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
         return false;
     }
-
-
-
-
 }

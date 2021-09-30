@@ -81,13 +81,14 @@ repositories {
     }
 }
 
-
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     implementation fg.deobf("curse.maven:farmersdelight-398521:${fd_version}")
     implementation fg.deobf("com.minecraftabnormals:abnormals-core:${mc_version}-${abnormalsCoreVersion}")
 
-
+    runtimeOnly fg.deobf("curse.maven:jei-238222:3157864")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3128555")
+    runtimeOnly fg.deobf("curse.maven:quark-243121:3221260")
 }
 
 jar {
@@ -103,7 +104,6 @@ jar {
         ])
     }
 }
-
 
 jar.finalizedBy('reobfJar')
 

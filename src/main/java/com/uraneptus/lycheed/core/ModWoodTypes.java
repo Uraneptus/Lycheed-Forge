@@ -13,7 +13,6 @@ import static net.minecraft.client.renderer.Atlases.SIGN_SHEET;
 
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModWoodTypes {
-
     public static final WoodType LYCHEE = new ModWoodType("lychee");
 
     @SubscribeEvent

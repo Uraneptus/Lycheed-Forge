@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class ModTileEntityTypes {
 
     public static Block[] getModBlocks(Class<?>... blockClasses)
     {
-        Collection<RegistryObject<Block>> blocks = ModBlocks.BLOCKS.getEntries();
+        Collection<RegistryObject<Block>> blocks = LycheedMod.BLOCKS.getEntries();
         ArrayList<Block> matchingBlocks = new ArrayList<>();
         for (RegistryObject<Block> registryObject : blocks)
         {
