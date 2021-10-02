@@ -27,10 +27,12 @@ public class LycheedMod {
         ModTileEntityTypes.TILE_ENTITIES.register(event_bus);
         ModEntities.ENTITY_TYPE.register(event_bus);
         ModParticleType.PARTICLES.register(event_bus);
+        ModFeatures.FEATURES.register(event_bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(ModFeatures.Configured::regFeatures);
     }
 }

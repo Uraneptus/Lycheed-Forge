@@ -46,6 +46,8 @@ public class ModBlocks {
     public static final AbstractBlock.Properties LYCHEE_LEAVES_CARPET_PROPERTIES = AbstractBlock.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.GRASS).harvestTool(ToolType.HOE).noOcclusion();
     public static final AbstractBlock.Properties LYCHEE_SAPLING_PROPERTIES = AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS);
 
+    public static final RegistryObject<Block> LYCHEE_SAPLING = HELPER.createBlock("lychee_sapling",
+            () -> new ModSaplingBlock(LYCHEE_SAPLING_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
     public static final RegistryObject<Block> LYCHEE_PLANKS = HELPER.createBlock("lychee_planks",
             () -> new PlanksBlock(LYCHEE_PLANKS_PROPERTIES), ItemGroup.TAB_BUILDING_BLOCKS);
