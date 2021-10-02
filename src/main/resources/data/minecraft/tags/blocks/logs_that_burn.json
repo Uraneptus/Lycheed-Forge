@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lycheed:stripped_lychee_log",
+    "lycheed:stripped_lychee_wood",
+    "lycheed:lychee_log",
+    "lycheed:lychee_wood"
+  ]
+}

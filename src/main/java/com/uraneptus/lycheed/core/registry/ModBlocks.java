@@ -10,9 +10,8 @@ import com.minecraftabnormals.abnormals_core.core.util.registry.BlockSubRegistry
 import com.mojang.datafixers.util.Pair;
 import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.ModIntegrations;
-import com.uraneptus.lycheed.common.blocks.ModBranchBlock;
-import com.uraneptus.lycheed.common.blocks.ModCakeBlock;
-import com.uraneptus.lycheed.common.blocks.ModLeavesBlock;
+import com.uraneptus.lycheed.common.blocks.*;
+import com.uraneptus.lycheed.core.world.gen.feature.LycheeTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -45,6 +44,7 @@ public class ModBlocks {
     public static final AbstractBlock.Properties LYCHEE_LADDER_PROPERTIES = AbstractBlock.Properties.of(Material.DECORATION).noOcclusion().harvestTool(ToolType.AXE).strength(0.4F).sound(SoundType.LADDER);
     public static final AbstractBlock.Properties LYCHEE_BOOKSHELF_PROPERTIES = AbstractBlock.Properties.copy(Blocks.BOOKSHELF);
     public static final AbstractBlock.Properties LYCHEE_LEAVES_CARPET_PROPERTIES = AbstractBlock.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.GRASS).harvestTool(ToolType.HOE).noOcclusion();
+    public static final AbstractBlock.Properties LYCHEE_SAPLING_PROPERTIES = AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS);
 
 
     public static final RegistryObject<Block> LYCHEE_PLANKS = HELPER.createBlock("lychee_planks",
@@ -78,7 +78,7 @@ public class ModBlocks {
             () -> new WoodFenceBlock(LYCHEE_PLANKS_PROPERTIES), 300, ItemGroup.TAB_DECORATIONS);
 
     public static final RegistryObject<Block> LYCHEE_FENCE_GATE = HELPER.createFuelBlock("lychee_fence_gate",
-            () -> new WoodFenceGateBlock(LYCHEE_PLANKS_PROPERTIES), 300, ItemGroup.TAB_DECORATIONS);
+            () -> new WoodFenceGateBlock(LYCHEE_PLANKS_PROPERTIES), 300, ItemGroup.TAB_REDSTONE);
 
     public static final RegistryObject<Block> LYCHEE_PRESSURE_PLATE = HELPER.createBlock("lychee_pressure_plate",
             () -> new WoodPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, LYCHEE_PRESSURE_PLATE_PROPERTIES), ItemGroup.TAB_REDSTONE);
@@ -108,7 +108,7 @@ public class ModBlocks {
             () -> new AbnormalsBeehiveBlock(LYCHEE_BEEHIVE_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
     public static final RegistryObject<Block> LYCHEE_PANTRY = HELPER.createBlock("lychee_pantry",
-            () -> !ModList.get().isLoaded("farmersdelight") ? new Block(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
+            () -> !ModList.get().isLoaded("farmersdelight") ? new ModFakePantryBlock(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
 
     public static final RegistryObject<Block> LYCHEE_LADDER = HELPER.createCompatFuelBlock("quark", "lychee_ladder",
             () -> new AbnormalsLadderBlock(LYCHEE_LADDER_PROPERTIES), 300, ItemGroup.TAB_DECORATIONS);

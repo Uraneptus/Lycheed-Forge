@@ -1,7 +1,8 @@
 {
   "variants": {
     "facing=north,open=false": {
-      "model": "lycheed:block/lychee_pantry"
+      "model": "lycheed:block/lychee_pantry",
+      "y": 0
     },
     "facing=south,open=false": {
       "model": "lycheed:block/lychee_pantry",
