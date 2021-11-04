@@ -1,7 +1,7 @@
 package com.uraneptus.lycheed.core.registry;
 
 import com.uraneptus.lycheed.LycheedMod;
-import com.uraneptus.lycheed.core.world.gen.feature.LycheeTree;
+import com.uraneptus.lycheed.core.world.gen.feature.LycheeTreeFeature;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -23,7 +23,7 @@ public class ModFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, LycheedMod.MOD_ID);
 
     public static final RegistryObject<Feature<BaseTreeFeatureConfig>> LYCHEE_TREE = FEATURES.register("lychee_tree",
-            () -> new LycheeTree(BaseTreeFeatureConfig.CODEC));
+            () -> new LycheeTreeFeature(BaseTreeFeatureConfig.CODEC));
 
     public static final class BlockStates {
         public static final BlockState LYCHEE_LOG = ModBlocks.LYCHEE_LOG.get().defaultBlockState();

@@ -11,7 +11,7 @@ import com.mojang.datafixers.util.Pair;
 import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.ModIntegrations;
 import com.uraneptus.lycheed.common.blocks.*;
-import com.uraneptus.lycheed.core.world.gen.feature.LycheeTree;
+import com.uraneptus.lycheed.core.world.gen.LycheeTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -23,7 +23,6 @@ import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
-import vectorwing.farmersdelight.FarmersDelight;
 
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
@@ -46,8 +45,6 @@ public class ModBlocks {
     public static final AbstractBlock.Properties LYCHEE_LEAVES_CARPET_PROPERTIES = AbstractBlock.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_GREEN).instabreak().sound(SoundType.GRASS).harvestTool(ToolType.HOE).noOcclusion();
     public static final AbstractBlock.Properties LYCHEE_SAPLING_PROPERTIES = AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS);
 
-    public static final RegistryObject<Block> LYCHEE_SAPLING = HELPER.createBlock("lychee_sapling",
-            () -> new ModSaplingBlock(LYCHEE_SAPLING_PROPERTIES), ItemGroup.TAB_DECORATIONS);
 
     public static final RegistryObject<Block> LYCHEE_PLANKS = HELPER.createBlock("lychee_planks",
             () -> new PlanksBlock(LYCHEE_PLANKS_PROPERTIES), ItemGroup.TAB_BUILDING_BLOCKS);
@@ -141,6 +138,10 @@ public class ModBlocks {
 
     public static final Pair<RegistryObject<AbnormalsChestBlock>,
             RegistryObject<AbnormalsTrappedChestBlock>> LYCHEE_CHESTS = HELPER.createCompatChestBlocks("quark", "lychee", MaterialColor.COLOR_RED);
+
+    public static final RegistryObject<Block> LYCHEE_SAPLING = HELPER.createBlock("lychee_sapling",
+            () -> new AbnormalsSaplingBlock(new LycheeTree(), LYCHEE_SAPLING_PROPERTIES), ItemGroup.TAB_DECORATIONS);
+
 
     public static boolean allowsSpawnOnLeaves(BlockState state, IBlockReader access, BlockPos pos, EntityType<?> entity) {
         return entity == EntityType.OCELOT || entity == EntityType.PARROT;
