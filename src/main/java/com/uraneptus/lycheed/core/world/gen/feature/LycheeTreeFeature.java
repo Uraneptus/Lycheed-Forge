@@ -1,40 +1,28 @@
 package com.uraneptus.lycheed.core.world.gen.feature;
 
-import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
-import com.uraneptus.lycheed.core.registry.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldWriter;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.IWorldGenerationBaseReader;
-import net.minecraft.world.gen.IWorldGenerationReader;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraftforge.common.IPlantable;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 
-import java.util.*;
+public class LycheeTreeFeature extends Feature<TreeConfiguration> {
 
-public class LycheeTreeFeature extends Feature<BaseTreeFeatureConfig> {
-
-    private static final Direction[] DIRECTION = new Direction[] { Direction.WEST }; //TODO make generation work for all directions
+    /*private static final Direction[] DIRECTION = new Direction[] { Direction.WEST }; //TODO make generation work for all directions
 
     private static final BlockState LOG = ModBlocks.LYCHEE_LOG.get().defaultBlockState();
-    private static final BlockState LEAVES = ModBlocks.LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 2);
+    private static final BlockState LEAVES = ModBlocks.LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 2);*/
 
-    public LycheeTreeFeature(Codec<BaseTreeFeatureConfig> config) {
+    public LycheeTreeFeature(Codec<TreeConfiguration> config) {
         super(config);
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random random, BlockPos pos, BaseTreeFeatureConfig config) {
+    public boolean place(FeaturePlaceContext<TreeConfiguration> pContext) {
+        return false;
+    }
+
+    /*@Override
+    public boolean place(WorldGenLevel world, ChunkGenerator generator, Random random, BlockPos pos, TreeConfiguration config) {
         while (pos.getY() > 1 && TreeUtil.isAirOrLeaves(world, pos)) {
             pos = pos.below();
         }
@@ -78,5 +66,5 @@ public class LycheeTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
         return true;
 
-    }
+    }*/
 }

@@ -1,5 +1,5 @@
 {
-  "parent": "abnormals_core:block/hedge_post",
+  "parent": "blueprint:block/hedge_post",
   "textures": {
     "log": "lycheed:block/lychee_log",
     "leaf": "lycheed:block/lychee_leaves"

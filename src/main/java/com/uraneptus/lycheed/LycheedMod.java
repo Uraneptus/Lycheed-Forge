@@ -1,8 +1,9 @@
 package com.uraneptus.lycheed;
 
-import com.minecraftabnormals.abnormals_core.core.util.registry.RegistryHelper;
-import com.uraneptus.lycheed.core.registry.*;
-import net.minecraft.block.Block;
+import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import com.uraneptus.lycheed.core.registry.ModFeatures;
+import com.uraneptus.lycheed.core.registry.ModParticleType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +16,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LycheedMod {
     public static final String MOD_ID = "lycheed";
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LycheedMod.MOD_ID);
     public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
 
     public LycheedMod() {
@@ -23,16 +23,13 @@ public class LycheedMod {
         event_bus.addListener(this::setup);
 
         REGISTRY_HELPER.register(event_bus);
-        BLOCKS.register(event_bus);
-        ModTileEntityTypes.TILE_ENTITIES.register(event_bus);
-        ModEntities.ENTITY_TYPE.register(event_bus);
         ModParticleType.PARTICLES.register(event_bus);
-        ModFeatures.FEATURES.register(event_bus);
+        //ModFeatures.FEATURES.register(event_bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(ModFeatures.Configured::regFeatures);
+        event.enqueueWork(ModFeatures::regFeatures);
     }
 }

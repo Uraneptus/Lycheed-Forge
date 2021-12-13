@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "lycheed:block/lychee_sapling"
+  }
+}

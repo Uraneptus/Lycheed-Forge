@@ -1,23 +1,23 @@
 package com.uraneptus.lycheed.common.blocks;
 
-import com.minecraftabnormals.abnormals_core.common.blocks.wood.AbnormalsLeavesBlock;
+import com.teamabnormals.blueprint.common.block.wood.BlueprintLeavesBlock;
 import com.uraneptus.lycheed.core.registry.ModParticleType;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class ModLeavesBlock extends AbnormalsLeavesBlock {
+public class ModLeavesBlock extends BlueprintLeavesBlock {
 
     public ModLeavesBlock(Properties properties) {
         super(properties);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
+    public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
         super.animateTick(state, world, pos, rand);
 
         if (rand.nextInt(50) == 0) {

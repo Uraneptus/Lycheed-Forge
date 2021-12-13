@@ -1,28 +1,28 @@
 package com.uraneptus.lycheed.common.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathType;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.Property;
-import net.minecraft.state.StateContainer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ModCakeBlock extends Block {
+public class ModCakeBlock extends Block {//TODO: Rewrite this
     public static final IntegerProperty BITES = IntegerProperty.create("lychee_cake_bites", 0, 4);
     protected static final VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{
             Block.box(3.0D, 0.0D, 3.0D, 13.0D, 5.0D, 13.0D),
@@ -36,28 +36,28 @@ public class ModCakeBlock extends Block {
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(BITES, 0));
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
         return SHAPE_BY_BITE[(Integer)state.getValue(BITES)];
     }
 
-    public ActionResultType use(BlockState state, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+    public InteractionResult use(BlockState state, Level world, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult result) {
         if (world.isClientSide) {
             ItemStack lvt_7_1_ = player.getItemInHand(hand);
             if (this.eat(world, blockPos, state, player).consumesAction()) {
-                return ActionResultType.SUCCESS;
+                return InteractionResult.SUCCESS;
             }
 
             if (lvt_7_1_.isEmpty()) {
-                return ActionResultType.CONSUME;
+                return InteractionResult.CONSUME;
             }
         }
 
         return this.eat(world, blockPos, state, player);
     }
 
-    public ActionResultType eat(IWorld world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public InteractionResult eat(LevelAccessor world, BlockPos pos, BlockState state, Player player) {
         if (!player.canEat(false)) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         } else {
             player.awardStat(Stats.EAT_CAKE_SLICE);
             player.getFoodData().eat(2, 0.1F);
@@ -68,23 +68,23 @@ public class ModCakeBlock extends Block {
                 world.removeBlock(pos, false);
             }
 
-            return ActionResultType.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
     }
 
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
         return facing == Direction.DOWN && !state.canSurvive(world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
     }
 
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         return worldIn.getBlockState(pos.below()).getMaterial().isSolid();
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{BITES});
     }
 
-    public int getAnalogOutputSignal(BlockState blockState, World worldIn, BlockPos pos) {
+    public int getAnalogOutputSignal(BlockState blockState, Level worldIn, BlockPos pos) {
         return (5 - (Integer)blockState.getValue(BITES)) * 2;
     }
 
@@ -92,7 +92,7 @@ public class ModCakeBlock extends Block {
         return true;
     }
 
-    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+    public boolean isPathfindable(BlockState state, BlockGetter worldIn, BlockPos pos, PathComputationType type) {
         return false;
     }
 }

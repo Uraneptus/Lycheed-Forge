@@ -1,19 +1,19 @@
 package com.uraneptus.lycheed.client.particles;
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particles.BasicParticleType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class LycheeLeavesParticle extends SpriteTexturedParticle {
-    protected final IAnimatedSprite animatedSprite;
+public class LycheeLeavesParticle extends TextureSheetParticle {
+    protected final SpriteSet animatedSprite;
     private final float rotSpeed;
 
-    public LycheeLeavesParticle(IAnimatedSprite animatedSprite, ClientWorld world, double posX, double posY, double posZ, double xV, double yV, double zV) {
+    public LycheeLeavesParticle(SpriteSet animatedSprite, ClientLevel world, double posX, double posY, double posZ, double xV, double yV, double zV) {
         super(world, posX, posY, posZ);
         this.animatedSprite = animatedSprite;
         int i = (int) (32.0D / (Math.random() * 0.8D + 0.2D));
@@ -25,8 +25,8 @@ public class LycheeLeavesParticle extends SpriteTexturedParticle {
     }
 
     @Override
-    public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
     public void tick() {
@@ -55,15 +55,15 @@ public class LycheeLeavesParticle extends SpriteTexturedParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Factory implements IParticleFactory<BasicParticleType> {
-        private IAnimatedSprite animatedSprite;
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
+        private SpriteSet animatedSprite;
 
-        public Factory(IAnimatedSprite animatedSprite) {
+        public Factory(SpriteSet animatedSprite) {
             this.animatedSprite = animatedSprite;
         }
 
         @Override
-        public Particle createParticle(BasicParticleType type, ClientWorld world, double x, double y, double z, double xV, double yV, double zV) {
+        public Particle createParticle(SimpleParticleType type, ClientLevel world, double x, double y, double z, double xV, double yV, double zV) {
             return new LycheeLeavesParticle(this.animatedSprite, world, x, y, z, xV, yV, zV);
         }
     }

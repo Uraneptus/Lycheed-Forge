@@ -1,8 +1,12 @@
 {
-    "parent": "block/cube_bottom_top",
+    "parent": "block/cube",
     "textures": {
-        "top": "lycheed:block/lychee_basket_top",
-        "bottom": "lycheed:block/lychee_basket_bottom",
-        "side": "lycheed:block/lychee_basket"
+        "particle": "lycheed:block/lychee_basket_top",
+        "down": "lycheed:block/lychee_basket_bottom",
+        "up": "lycheed:block/lychee_basket_top",
+        "north": "lycheed:block/lychee_basket_front",
+        "south": "lycheed:block/lychee_basket_front",
+        "east": "lycheed:block/lychee_basket_side",
+        "west": "lycheed:block/lychee_basket_side"
     }
 }

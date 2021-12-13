@@ -11,12 +11,6 @@
     },
     "age=3": {
       "model": "lycheed:block/lychee_branch_stage3"
-    },
-    "age=4": {
-      "model": "lycheed:block/lychee_branch_stage4"
-    },
-    "age=5": {
-      "model": "lycheed:block/lychee_branch_stage5"
     }
   }
 }
