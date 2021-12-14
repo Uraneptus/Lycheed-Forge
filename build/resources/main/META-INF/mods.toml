@@ -1,5 +1,5 @@
 modLoader = "javafml" #mandatory
-loaderVersion = "[37,)" #mandatory
+loaderVersion = "[39,)" #mandatory
 license = "GNU General Public License v3.0"
 
 [[mods]] #mandatory
@@ -17,21 +17,21 @@ license = "GNU General Public License v3.0"
 [[dependencies.lycheed]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[37,)" #mandatory
+    versionRange="[39,)" #mandatory
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.lycheed]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17,)"
+    versionRange="[1.18.1,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.lycheed]]
     modId="blueprint"
     mandatory=true
-    versionRange="[4.1.1,)"
+    versionRange="[5.0.0,)"
     ordering="AFTER"
     side="BOTH"
 

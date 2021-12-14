@@ -4,13 +4,18 @@ import com.uraneptus.lycheed.core.registry.ModFeatures;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class LycheeTree extends AbstractTreeGrower {
-
     @Nullable
+    @Override
+    protected ConfiguredFeature<?, ?> getConfiguredFeature(Random p_60014_, boolean p_60015_) {
+        return null;
+    }
+
+    /*@Nullable
     @Override
     protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
         return ModFeatures.LYCHEE_TREE_FEATURE;

@@ -34,7 +34,7 @@ public class LycheedMod {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(ModFeatures::regFeatures);
+        //event.enqueueWork(ModFeatures::regFeatures);
     }
 
     @SubscribeEvent

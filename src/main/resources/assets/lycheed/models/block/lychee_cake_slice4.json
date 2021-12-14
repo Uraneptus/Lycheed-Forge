@@ -1,0 +1,22 @@
+{
+  "textures": {
+    "particle": "lycheed:block/lychee_cake_side",
+    "bottom": "lycheed:block/lychee_cake_bottom",
+    "top": "lycheed:block/lychee_cake_top",
+    "side": "lycheed:block/lychee_cake_side",
+    "inside": "lycheed:block/lychee_cake_inner"
+  },
+  "elements": [
+    {   "from": [ 11, 0, 3 ],
+      "to": [ 13, 5, 13 ],
+      "faces": {
+        "down":  { "texture": "#bottom", "cullface": "down" },
+        "up":    { "texture": "#top" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "west":  { "texture": "#inside" },
+        "east":  { "texture": "#side" }
+      }
+    }
+  ]
+}
