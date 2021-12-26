@@ -1,5 +1,5 @@
 {
-  "parent": "abnormals_core:block/vertical_slab",
+  "parent": "blueprint:block/vertical_slab",
   "textures": {
     "side": "lycheed:block/lychee_planks",
     "top": "lycheed:block/lychee_planks",

@@ -12,7 +12,7 @@ import com.uraneptus.lycheed.LycheedMod;
 import com.uraneptus.lycheed.ModIntegrations;
 import com.uraneptus.lycheed.common.blocks.ModBranchBlock;
 import com.uraneptus.lycheed.common.blocks.ModCakeBlock;
-import com.uraneptus.lycheed.common.blocks.ModFakePantryBlock;
+import com.uraneptus.lycheed.common.blocks.ModFakeCabinetBlock;
 import com.uraneptus.lycheed.common.blocks.ModLeavesBlock;
 import com.uraneptus.lycheed.core.world.gen.LycheeTree;
 import net.minecraft.core.BlockPos;
@@ -62,7 +62,6 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LYCHEE_LADDER = HELPER.createCompatFuelBlock("quark", "lychee_ladder", () -> new BlueprintLadderBlock(LYCHEE_LADDER_PROPERTIES), 300, CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> LYCHEE_BOOKSHELF = HELPER.createCompatFuelBlock("quark", "lychee_bookshelf", () -> new BookshelfBlock(LYCHEE_BOOKSHELF_PROPERTIES), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> VERTICAL_LYCHEE_PLANKS = HELPER.createCompatBlock("quark", "vertical_lychee_planks", () -> new Block(LYCHEE_PLANKS_PROPERTIES), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> LYCHEE_LEAVES_CARPET = HELPER.createCompatBlock("quark", "lychee_leaf_carpet", () -> new LeafCarpetBlock(LYCHEE_LEAVES_CARPET_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> FRUITFUL_LYCHEE_LEAVES_CARPET = HELPER.createCompatBlock("quark", "fruitful_lychee_leaf_carpet", () -> new LeafCarpetBlock(LYCHEE_LEAVES_CARPET_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> STRIPPED_LYCHEE_POST = HELPER.createCompatFuelBlock("quark", "stripped_lychee_post", () -> new WoodPostBlock(LYCHEE_PLANKS_PROPERTIES), 300, CreativeModeTab.TAB_BUILDING_BLOCKS);
@@ -73,7 +72,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LYCHEE_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "lychee_beehive", () -> new BlueprintBeehiveBlock(LYCHEE_BEEHIVE_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
 
-    public static final RegistryObject<Block> LYCHEE_PANTRY = HELPER.createBlock("lychee_pantry", () -> !ModList.get().isLoaded("farmersdelight") ? new ModFakePantryBlock(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getPantryBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
+    public static final RegistryObject<Block> LYCHEE_CABINET = HELPER.createBlock("lychee_cabinet", () -> !ModList.get().isLoaded("farmersdelight") ? new ModFakeCabinetBlock(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getCabinetBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
 
 
     static class Properties {

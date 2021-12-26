@@ -2,6 +2,8 @@ package com.uraneptus.lycheed;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.uraneptus.lycheed.core.data.BlockStates;
+import com.uraneptus.lycheed.core.data.ItemModels;
+import com.uraneptus.lycheed.core.data.LangGenerator;
 import com.uraneptus.lycheed.core.registry.ModFeatures;
 import com.uraneptus.lycheed.core.registry.ModParticleType;
 import net.minecraft.world.level.block.Block;
@@ -40,5 +42,7 @@ public class LycheedMod {
     @SubscribeEvent
     public void gatherData(GatherDataEvent event) {
         event.getGenerator().addProvider(new BlockStates(event.getGenerator(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(new ItemModels(event.getGenerator(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(new LangGenerator(event.getGenerator()));
     }
 }

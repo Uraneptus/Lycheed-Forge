@@ -10,11 +10,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 
-public class ModFakePantryBlock extends Block {
+public class ModFakeCabinetBlock extends Block {
     public static final DirectionProperty FACING;
     public static final BooleanProperty OPEN;
 
-    public ModFakePantryBlock(Properties properties) {
+    public ModFakeCabinetBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
     }

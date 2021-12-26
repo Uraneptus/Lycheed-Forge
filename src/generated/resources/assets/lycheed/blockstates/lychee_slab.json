@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "lycheed:block/lychee_slab_top"
+    },
     "type=bottom": {
       "model": "lycheed:block/lychee_slab"
     },
     "type=double": {
       "model": "lycheed:block/lychee_planks"
-    },
-    "type=top": {
-      "model": "lycheed:block/lychee_slab_top"
     }
   }
 }

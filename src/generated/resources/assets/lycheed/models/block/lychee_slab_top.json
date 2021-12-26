@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
+    "side": "lycheed:block/lychee_planks",
     "bottom": "lycheed:block/lychee_planks",
-    "top": "lycheed:block/lychee_planks",
-    "side": "lycheed:block/lychee_planks"
+    "top": "lycheed:block/lychee_planks"
   }
 }

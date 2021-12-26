@@ -1,22 +1,17 @@
 package com.uraneptus.lycheed;
 
-/*import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.CreativeModeTab;
 import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.blocks.PantryBlock;*/
+import vectorwing.farmersdelight.common.block.CabinetBlock;
 
-import com.uraneptus.lycheed.common.blocks.ModFakePantryBlock;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class ModIntegrations { //Waiting for farmer's Delight to update
-    public static Block getPantryBlock(BlockBehaviour.Properties properties) {
-        return new ModFakePantryBlock(properties);
+public class ModIntegrations {
+    public static Block getCabinetBlock(BlockBehaviour.Properties properties) {
+        return new CabinetBlock(properties);
     }
 
     public static CreativeModeTab getFdItemGroup() {
-        return CreativeModeTab.TAB_MISC;
+        return FarmersDelight.CREATIVE_TAB;
     }
 }
