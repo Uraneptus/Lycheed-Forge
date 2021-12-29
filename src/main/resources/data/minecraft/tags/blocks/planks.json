@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "lycheed:lychee_planks",
-    "lycheed:vertical_lychee_planks"
+    "lycheed:lychee_planks"
   ]
 }

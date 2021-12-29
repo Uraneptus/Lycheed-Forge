@@ -96,8 +96,8 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:configured-457570:3559398")
     runtimeOnly fg.deobf("curse.maven:catalogue-459701:3559402")
     runtimeOnly fg.deobf("curse.maven:appleskin-248787:3549846")
-    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3575622")
-    runtimeOnly fg.deobf("curse.maven:quark-243121:3578106")
+    //runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3575622")
+    //runtimeOnly fg.deobf("curse.maven:quark-243121:3578106")
     //runtimeOnly fg.deobf("curse.maven:buzzier_bees-355458:3226433")
 }
 

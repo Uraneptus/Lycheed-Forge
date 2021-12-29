@@ -30,7 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-//TODO: Since I changed the stages here are probably some wrong values
+//TODO: Since I changed the stages, here are probably some wrong values
 //TODO: Rewrite this
 public class ModBranchBlock extends Block implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;

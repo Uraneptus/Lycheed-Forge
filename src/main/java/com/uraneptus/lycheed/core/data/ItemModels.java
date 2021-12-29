@@ -20,10 +20,37 @@ public class ItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicBlockItem(ModBlocks.LYCHEE_PLANKS.get());
+        basicBlockItem(ModBlocks.STRIPPED_LYCHEE_LOG.get());
+        basicBlockItem(ModBlocks.STRIPPED_LYCHEE_WOOD.get());
+        basicBlockItem(ModBlocks.LYCHEE_LOG.get());
+        basicBlockItem(ModBlocks.LYCHEE_WOOD.get());
+        basicBlockItem(ModBlocks.LYCHEE_LEAVES.get());
+        basicBlockItem(ModBlocks.FRUITFUL_LYCHEE_LEAVES.get());
+        basicBlockItem(ModBlocks.LYCHEE_SLAB.get());
+        basicBlockItem(ModBlocks.LYCHEE_STAIRS.get());
+        basicBlockItem(ModBlocks.LYCHEE_FENCE_GATE.get());
+        basicBlockItem(ModBlocks.LYCHEE_PRESSURE_PLATE.get());
+        basicBlockItem(ModBlocks.LYCHEE_BASKET.get());
+        basicBlockItem(ModBlocks.LYCHEE_BOOKSHELF.get());
+        basicBlockItem(ModBlocks.LYCHEE_LEAVES_CARPET.get());
+        basicBlockItem(ModBlocks.FRUITFUL_LYCHEE_LEAVES_CARPET.get());
+        basicBlockItem(ModBlocks.STRIPPED_LYCHEE_POST.get());
+        basicBlockItem(ModBlocks.LYCHEE_POST.get());
+        basicBlockItem(ModBlocks.LYCHEE_HEDGE.get(), "_post");
+        basicBlockItem(ModBlocks.LYCHEE_VERTICAL_SLAB.get());
+        basicBlockItem(ModBlocks.LYCHEE_BEEHIVE.get());
+        basicBlockItem(ModBlocks.LYCHEE_CABINET.get());
+        basicBlockItem(ModBlocks.LYCHEE_TRAPDOOR.get(), "_bottom");
+        basicBlockItem(ModBlocks.LYCHEE_FENCE.get(), "_inventory");
+        basicBlockItem(ModBlocks.LYCHEE_BUTTON.get(), "_inventory");
         generatedItem(ModItems.LYCHEE.get());
         generatedItem(ModItems.DRIED_LYCHEE.get());
         generatedItem(ModItems.LYCHEE_CAKE_SLICE.get());
         generatedItem(ModItems.LYCHEE_BOAT.get());
+        /*generatedItem(Item.byBlock(ModBlocks.LYCHEE_SAPLING.get()));
+        generatedItem(Item.byBlock(ModBlocks.LYCHEE_DOOR.get()));
+        generatedItem(Item.byBlock(ModBlocks.LYCHEE_CAKE.get()));
+        generatedItem(Item.byBlock(ModBlocks.LYCHEE_LADDER.get()));*/
 
         System.out.println("ITEM GENERATION COMPLETE");
     }
@@ -46,6 +73,10 @@ public class ItemModels extends ItemModelProvider {
 
     private void basicBlockItem(Block blockForItem) {
         withExistingParent(name(blockForItem), blockLocation(name(blockForItem)));
+    }
+
+    private void basicBlockItem(Block blockForItem, String sufix) {
+        withExistingParent(name(blockForItem), blockLocation(name(blockForItem) + sufix));
     }
 
     private void basicItem(Item item, String type) {
