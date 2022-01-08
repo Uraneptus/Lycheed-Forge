@@ -1,16 +1,12 @@
 package com.uraneptus.lycheed.core.data;
 
 import com.uraneptus.lycheed.LycheedMod;
-import com.uraneptus.lycheed.common.blocks.ModBranchBlock;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -20,30 +16,34 @@ public class BlockStates extends BlockStateProvider {
         super(gen, LycheedMod.MOD_ID, fileHelper);
     }
 
-    private String name(Block block) {
-        return block.getRegistryName().getPath();
-    }
-
-    public ResourceLocation location(String path) {
-        return new ResourceLocation(LycheedMod.MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + path);
-    }
-
     @Override
     protected void registerStatesAndModels() {
         basicBlock(ModBlocks.LYCHEE_PLANKS.get());
         modLogBlock(ModBlocks.LYCHEE_LOG.get());
         modLogBlock(ModBlocks.STRIPPED_LYCHEE_LOG.get());
-        modWoodBlock(ModBlocks.LYCHEE_WOOD.get(), name(ModBlocks.LYCHEE_LOG.get()));
-        modWoodBlock(ModBlocks.STRIPPED_LYCHEE_WOOD.get(), name(ModBlocks.STRIPPED_LYCHEE_LOG.get()));
+        modWoodBlock(ModBlocks.LYCHEE_WOOD.get(), Textures.LYCHEE_LOG);
+        modWoodBlock(ModBlocks.STRIPPED_LYCHEE_WOOD.get(), Textures.STRIPPED_LYCHEE_LOG);
         modLeavesBlock(ModBlocks.LYCHEE_LEAVES.get());
         modLeavesBlock(ModBlocks.FRUITFUL_LYCHEE_LEAVES.get());
         modCrossBlock(ModBlocks.LYCHEE_SAPLING.get());
-        modSlabBlock(ModBlocks.LYCHEE_SLAB.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
-        modStairsBlock(ModBlocks.LYCHEE_STAIRS.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
+        modSlabBlock(ModBlocks.LYCHEE_SLAB.get(), Textures.LYCHEE_PLANKS);
+        modStairsBlock(ModBlocks.LYCHEE_STAIRS.get(), Textures.LYCHEE_PLANKS);
         modDoorBlock(ModBlocks.LYCHEE_DOOR.get());
         modTrapdoorBlock(ModBlocks.LYCHEE_TRAPDOOR.get());
+        modFenceBlock(ModBlocks.LYCHEE_FENCE.get(), Textures.LYCHEE_PLANKS);
+        modFenceGateBlock(ModBlocks.LYCHEE_FENCE_GATE.get(), Textures.LYCHEE_PLANKS);
+        modPressurePlateBlock(ModBlocks.LYCHEE_PRESSURE_PLATE.get(), Textures.LYCHEE_PLANKS);
+        modButtonBlock(ModBlocks.LYCHEE_BUTTON.get(), Textures.LYCHEE_PLANKS);
 
         System.out.println("BLOCK GENERATION COMPLETE");
+    }
+
+    public static String name(Block block) {
+        return block.getRegistryName().getPath();
+    }
+
+    public ResourceLocation location(String path) {
+        return new ResourceLocation(LycheedMod.MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + path);
     }
 
 
@@ -88,7 +88,21 @@ public class BlockStates extends BlockStateProvider {
         trapdoorBlock((TrapDoorBlock) block, location(name(block)), true);
     }
 
-    public void modFenceBlock(Block block) {
-        fenceBlock((FenceBlock) block, location(name(block)));
+    public void modFenceBlock(Block block, String texture) {
+        fenceBlock((FenceBlock) block, location(texture));
     }
+
+    public void modFenceGateBlock(Block block, String texture) {
+        fenceGateBlock((FenceGateBlock) block, location(texture));
+    }
+
+    private void modPressurePlateBlock(Block block, String texture) {
+        pressurePlateBlock((PressurePlateBlock) block, location(texture));
+    }
+
+    private void modButtonBlock(Block block, String texture) {
+        buttonBlock((ButtonBlock) block, location(texture));
+    }
+
+
 }

@@ -25,7 +25,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
@@ -36,10 +38,10 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(6.0D, 13.0D, 6.0D, 10.0D, 16.0D, 10.0D), //Age 0
-            Block.box(6.0D, 11.0D, 6.0D, 10.0D, 16.0D, 10.0D), //Age 1
-            Block.box(4.0D, 9.5D, 4.0D, 11.0D, 16.0D, 11.0D),  //Age 2
-            Block.box(4.0D, 6.0D, 4.0D, 12.0D, 16.0D, 12.0D),  //Age 3
+            Shapes.box(0.25, 0.5, 0.25, 0.75, 1.0625, 0.75), //Age 0
+            Shapes.box(0.1875, 0.25, 0.1875, 0.8125, 1.0625, 0.8125), //Age 1
+            Shapes.box(0.125, 0, 0.125, 0.875, 1.0625, 0.875),  //Age 2
+            Shapes.box(0.125, 0, 0.125, 0.875, 1.0625, 0.875),  //Age 3
     };
 
     public ModBranchBlock(Properties properties) {
@@ -183,7 +185,7 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
         if (!flag && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
             return InteractionResult.PASS;
         } else if (i == 3) {
-            int j = 1 + world.random.nextInt(2);
+            int j = 1 + world.random.nextInt();
             popResource(world, pos, new ItemStack(ModItems.LYCHEE.get(), j + (flag ? 1 : 0)));
             world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             world.setBlock(pos, state.setValue(AGE, Integer.valueOf(2)), 3);

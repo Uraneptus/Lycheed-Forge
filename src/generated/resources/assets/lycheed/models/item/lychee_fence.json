@@ -1,3 +1,6 @@
 {
-  "parent": "lycheed:block/lychee_fence_inventory"
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "lycheed:block/lychee_planks"
+  }
 }

@@ -41,24 +41,28 @@ public class ItemModels extends ItemModelProvider {
         basicBlockItem(ModBlocks.LYCHEE_BEEHIVE.get());
         basicBlockItem(ModBlocks.LYCHEE_CABINET.get());
         basicBlockItem(ModBlocks.LYCHEE_TRAPDOOR.get(), "_bottom");
-        basicBlockItem(ModBlocks.LYCHEE_FENCE.get(), "_inventory");
-        basicBlockItem(ModBlocks.LYCHEE_BUTTON.get(), "_inventory");
+        fenceBlockItem(ModBlocks.LYCHEE_FENCE.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
+        //basicBlockItem(ModBlocks.LYCHEE_FENCE.get(), "_inventory");
+        buttonBlockItem(ModBlocks.LYCHEE_BUTTON.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
         generatedItem(ModItems.LYCHEE.get());
         generatedItem(ModItems.DRIED_LYCHEE.get());
         generatedItem(ModItems.LYCHEE_CAKE_SLICE.get());
         generatedItem(ModItems.LYCHEE_BOAT.get());
-        /*generatedItem(Item.byBlock(ModBlocks.LYCHEE_SAPLING.get()));
-        generatedItem(Item.byBlock(ModBlocks.LYCHEE_DOOR.get()));
-        generatedItem(Item.byBlock(ModBlocks.LYCHEE_CAKE.get()));
-        generatedItem(Item.byBlock(ModBlocks.LYCHEE_LADDER.get()));*/
+        generatedBlockItemWithBlock(ModBlocks.LYCHEE_SAPLING.get());
+        generatedBlockItemWithBlock(ModBlocks.LYCHEE_LADDER.get());
+        generatedBlockItemWithItem(ModBlocks.LYCHEE_DOOR.get());
+        generatedBlockItemWithItem(ModBlocks.LYCHEE_CAKE.get());
+
 
         System.out.println("ITEM GENERATION COMPLETE");
     }
 
+    private static final String GENERATED = "item/generated";
+    private static final String HANDHELD = "item/handheld";
+
     private String name(Block block) {
         return block.getRegistryName().getPath();
     }
-
     private String name(Item item) {
         return item.getRegistryName().getPath();
     }
@@ -79,15 +83,31 @@ public class ItemModels extends ItemModelProvider {
         withExistingParent(name(blockForItem), blockLocation(name(blockForItem) + sufix));
     }
 
+    private void generatedBlockItemWithItem(Block blockForItem) {
+        withExistingParent(name(blockForItem), GENERATED).texture("layer0", itemLocation(name(blockForItem)));
+    }
+
+    private void generatedBlockItemWithBlock(Block blockForItem) {
+        withExistingParent(name(blockForItem), GENERATED).texture("layer0", blockLocation(name(blockForItem)));
+    }
+
     private void basicItem(Item item, String type) {
         withExistingParent(name(item), type).texture("layer0", itemLocation(name(item)));
     }
 
     private void generatedItem(Item item) {
-        basicItem(item, "item/generated");
+        basicItem(item, GENERATED);
     }
 
     private void handheldItem(Item item) {
-        basicItem(item, "item/handheld");
+        basicItem(item, HANDHELD);
+    }
+
+    private void fenceBlockItem(Block blockForItem, String texture) {
+        fenceInventory(name(blockForItem), blockLocation(texture));
+    }
+
+    private void buttonBlockItem(Block blockForItem, String texture) {
+        buttonInventory(name(blockForItem), blockLocation(texture));
     }
 }
