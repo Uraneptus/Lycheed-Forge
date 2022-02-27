@@ -21,7 +21,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LycheedMod {
     public static final String MOD_ID = "lycheed";
-    public static final String BLUEPRINT_MOD_ID = "blueprint";
     public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
 
     public LycheedMod() {
@@ -29,14 +28,16 @@ public class LycheedMod {
         event_bus.addListener(this::setup);
 
         REGISTRY_HELPER.register(event_bus);
+        ModFeatures.FEATURES.register(event_bus);
         ModParticleType.PARTICLES.register(event_bus);
+
         event_bus.addListener(this::gatherData);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(ModFeatures::registerFeatures);
+       // event.enqueueWork(ModFeatures::registerFeatures);
     }
 
     @SubscribeEvent

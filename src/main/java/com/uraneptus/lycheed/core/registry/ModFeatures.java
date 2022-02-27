@@ -1,32 +1,40 @@
 package com.uraneptus.lycheed.core.registry;
 
 
+import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.core.world.gen.feature.LycheeTreeSmall;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModFeatures {
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, LycheedMod.MOD_ID);
 
-    public static final ConfiguredFeature<?, ?> LYCHEE_TREE_SMALL = Feature.TREE.configured(
-                    new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModBlocks.LYCHEE_LOG.get()),
-                    new StraightTrunkPlacer(3, 1, 0),
-                    new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModBlocks.LYCHEE_LEAVES.get().defaultBlockState(), 3).add(ModBlocks.FRUITFUL_LYCHEE_LEAVES.get().defaultBlockState(), 1)),
-                    new BushFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
-                    new TwoLayersFeatureSize(0, 0 , 0)).build());
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> LYCHEE_TREE_SMALL = FEATURES.register("lychee_tree_small_0", () -> new LycheeTreeSmall(NoneFeatureConfiguration.CODEC));
+
+    public static final class LycheedFeatureConfigs {
+        public static final ConfiguredFeature<?, ?> LYCHEE_TREE_SMALL_CONFIG = register("lychee_tree_small_0", ModFeatures.LYCHEE_TREE_SMALL.get().configured(FeatureConfiguration.NONE));
+
+        /**
+         * Modified version of the .register() method in {@link FeatureUtils}
+         */
+        public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
+            return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(LycheedMod.MOD_ID, name), configuredFeature);
+        }
+    }
 
 
     public static void registerFeatures() {
-        FeatureUtils.register("lychee_tree_small", LYCHEE_TREE_SMALL);
+        //FeatureUtils.register("lychee_tree_small", LYCHEE_TREE_SMALL);
     }
 
 
