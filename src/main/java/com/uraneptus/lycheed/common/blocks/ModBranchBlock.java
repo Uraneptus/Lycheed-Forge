@@ -29,11 +29,10 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-//TODO: Since I changed the stages, here are probably some wrong values
-//TODO: Rewrite this
 public class ModBranchBlock extends Block implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
@@ -46,15 +45,11 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
 
     public ModBranchBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
     }
 
-    @Override
-    public void neighborChanged(BlockState state, Level world, BlockPos blockPos, Block block, BlockPos fromBlockPos, boolean isMoving) {
-        BlockState stateUp = world.getBlockState(blockPos.above());
-        if(!stateUp.is(BlockTags.LEAVES)) {
-            world.destroyBlock(blockPos, true);
-        }
+    protected ItemLike getBaseSeedId() {
+        return ModItems.LYCHEE.get();
     }
 
     @Override
@@ -62,18 +57,16 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
         return true;
     }
 
+    @NotNull
     @Override
     public VoxelShape getOcclusionShape(BlockState state, BlockGetter worldIn, BlockPos pos) {
-        return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
+        return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
+    @NotNull
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {
-        return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
-    }
-
-    public IntegerProperty getAgeProperty() {
-        return AGE;
+        return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
     public int getMaxAge() {
@@ -81,15 +74,15 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
     }
 
     protected int getAge(BlockState state) {
-        return state.getValue(this.getAgeProperty());
+        return state.getValue(AGE);
     }
 
     public BlockState getStateForAge(int age) {
-        return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(age));
+        return this.defaultBlockState().setValue(AGE, Integer.valueOf(age));
     }
 
     public boolean isMaxAge(BlockState state) {
-        return state.getValue(this.getAgeProperty()) >= this.getMaxAge();
+        return state.getValue(AGE) >= this.getMaxAge();
     }
 
     public boolean isRandomlyTicking(BlockState state) {
@@ -99,14 +92,12 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         if (!world.isAreaLoaded(pos, 1)) return;
-        if (world.getRawBrightness(pos, 0) >= 9) {
-            int i = this.getAge(state);
-            if (i < this.getMaxAge()) {
-                float f = getGrowthSpeed(this, world, pos);
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int)(25.0F / f) + 1) == 0)) {
-                    world.setBlock(pos, this.getStateForAge(i + 1), 2);
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
-                }
+        int i = this.getAge(state);
+        if (i < this.getMaxAge() && world.getRawBrightness(pos, 0) >= 9) {
+            //float f = getGrowthSpeed(this, world, pos);
+            if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt(5) == 0)) {
+                world.setBlock(pos, this.getStateForAge(i + 1), 2);
+                net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
             }
         }
 
@@ -126,43 +117,6 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
         return Mth.nextInt(world.random, 0, 2);
     }
 
-    protected static float getGrowthSpeed(Block blockIn, BlockGetter worldIn, BlockPos pos) {
-        float f = 2.0F;
-        BlockPos blockpos = pos;
-        BlockState air = Blocks.AIR.defaultBlockState();
-        for (int i = -1; i <= 1; ++i) {
-            for (int j = -1; j <= 1; ++j) {
-                float f1 = 0.0F;
-                BlockState iblockstate = worldIn.getBlockState(blockpos.offset(i, 0, j));
-                if (iblockstate.getBlock().defaultBlockState() == air) f1 = 2.0F;
-                if (i != 0 || j != 0) f1 /= 2.0F;
-                f += f1;
-            }
-        }
-
-        BlockPos blockposN = pos.north();
-        BlockPos blockposS = pos.south();
-        BlockPos blockposW = pos.west();
-        BlockPos blockposE = pos.east();
-        boolean flag = !isLeavesOrAir(worldIn, blockposN) || !isLeavesOrAir(worldIn, blockposS);
-        boolean flag1 = !isLeavesOrAir(worldIn, blockposE) || !isLeavesOrAir(worldIn, blockposW);
-
-        if (flag && flag1) {
-            f /= 2.0F;
-        } else {
-            boolean flag2 = !isLeavesOrAir(worldIn, blockposW.north()) || !isLeavesOrAir(worldIn, blockposE.north()) || !isLeavesOrAir(worldIn, blockposN.south()) || !isLeavesOrAir(worldIn, blockposW.south());
-            if (flag2) {
-                f /= 2.0F;
-            }
-        }
-        return f;
-    }
-
-    @SuppressWarnings("deprecation")
-    private static boolean isLeavesOrAir(BlockGetter worldIn, BlockPos pos) { //TODO: This makes two lychees placed next to each other break under a non leaves block
-        return worldIn.getBlockState(pos).isAir() || worldIn.getBlockState(pos).is(BlockTags.LEAVES);
-    }
-
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         if (worldIn.getBlockState(pos.above()).is(ModTags.BlockTags.CAN_PLACE_LYCHEE))
@@ -170,25 +124,23 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
         return false;
     }
 
-    protected ItemLike getBaseSeedId() {
-        return ModItems.LYCHEE.get();
-    }
-
     @Override
+    @NotNull
     public ItemStack getCloneItemStack(BlockGetter p_185473_1_, BlockPos p_185473_2_, BlockState p_185473_3_) {
-        return new ItemStack(this.getBaseSeedId());
+        return new ItemStack(getBaseSeedId());
     }
 
+    //Bad code
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         int i = state.getValue(AGE);
         boolean flag = i == 3;
-        if (!flag && player.getItemInHand(hand).getItem() == Items.BONE_MEAL) {
+        if (!flag && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
-        } else if (i == 3) {
-            int j = 1 + world.random.nextInt();
-            popResource(world, pos, new ItemStack(ModItems.LYCHEE.get(), j + (flag ? 1 : 0)));
+        } else if (i > 1) {
+            int j = 1 + world.random.nextInt(2);
+            popResource(world, pos, new ItemStack(getBaseSeedId(), j + (flag ? 1 : 0)));
             world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            world.setBlock(pos, state.setValue(AGE, Integer.valueOf(2)), 3);
+            world.setBlock(pos, state.setValue(AGE, 1), 2);
             return InteractionResult.sidedSuccess(world.isClientSide);
         } else {
             return super.use(state, world, pos, player, hand, result);
