@@ -6,7 +6,9 @@ import com.uraneptus.lycheed.core.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -34,6 +36,10 @@ public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
         Map<BlockPos, Direction> fruitLeaves = new HashMap<>();
         int trunkHeight = 3;
 
+        if (!TreeUtil.isValidGround(level, pos.below(), (SaplingBlock) ModBlocks.LYCHEE_SAPLING.get())) {
+            return false;
+        }
+
         for (int i = 0; i < trunkHeight; i++) {
             logs.add(blockPos);
             blockPos = blockPos.above();
@@ -43,57 +49,55 @@ public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
 
         for (BlockPos log : logs) {
             if (i >= trunkHeight - 1) {
-                for (Direction direction : Direction.values()) {
-                    if (direction.getAxis().isHorizontal()) {
-                        if (i == trunkHeight - 1) {
-                            leaves.put(log.offset(0, 3, 0), direction);
+                for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
+                    if (i == trunkHeight - 1) {
+                        leaves.put(log.offset(0, 3, 0), direction);
 
-                            if (random.nextInt(8) != 0) {
-                                leaves.put(log.offset(0, 2, 0), direction);
-                                leaves.put(log.offset(1, 2, 0), direction);
-                                leaves.put(log.offset(0, 2, 1), direction);
-                                leaves.put(log.offset(0, 2, -1), direction);
-                            } else {
-                                fruitLeaves.put(log.offset(0, 2, 0), direction);
-                                fruitLeaves.put(log.offset(1, 2, 0), direction);
-                                fruitLeaves.put(log.offset(0, 2, 1), direction);
-                                fruitLeaves.put(log.offset(0, 2, -1), direction);
-                            }
-                            if (random.nextInt(7) != 0) {
-                                leaves.put(log.relative(direction).above(), direction);
-                                leaves.put(log.offset(0, 1, 0), direction);
-                                leaves.put(log.offset(-1, 1, 1), direction);
-                                leaves.put(log.offset(-1, 1, -1), direction);
-                                leaves.put(log.offset(1, 1, 1), direction);
-                            } else {
-                                fruitLeaves.put(log.relative(direction).above(), direction);
-                                fruitLeaves.put(log.offset(0, 1, 0), direction);
-                                fruitLeaves.put(log.offset(-1, 1, 1), direction);
-                                fruitLeaves.put(log.offset(-1, 1, -1), direction);
-                                fruitLeaves.put(log.offset(1, 1, 1), direction);
-                            }
-                            if (random.nextInt(6) != 0) {
-                                leaves.put(log.offset(-1, 0, 1), direction);
-                                leaves.put(log.offset(1, 0, 1), direction);
-                                leaves.put(log.offset(0, 0, 1), direction);
-                                leaves.put(log.offset(-1, 0, 0), direction);
-                                leaves.put(log.offset(1, 0, -1), direction);
-                                leaves.put(log.offset(0, 0, -1), direction);
-                            } else {
-                                fruitLeaves.put(log.offset(-1, 0, 1), direction);
-                                fruitLeaves.put(log.offset(1, 0, 1), direction);
-                                fruitLeaves.put(log.offset(0, 0, 1), direction);
-                                fruitLeaves.put(log.offset(-1, 0, 0), direction);
-                                fruitLeaves.put(log.offset(1, 0, -1), direction);
-                                fruitLeaves.put(log.offset(0, 0, -1), direction);
-                            }
-                            if (random.nextInt(8) != 0) {
-                                leaves.put(log.offset(0, -1, 1), direction);
-                                leaves.put(log.offset(0, -1, -1), direction);
-                            } else {
-                                fruitLeaves.put(log.offset(0, -1, 1), direction);
-                                fruitLeaves.put(log.offset(0, -1, -1), direction);
-                            }
+                        if (random.nextInt(8) != 0) {
+                            leaves.put(log.offset(0, 2, 0), direction);
+                            leaves.put(log.offset(1, 2, 0), direction);
+                            leaves.put(log.offset(0, 2, 1), direction);
+                            leaves.put(log.offset(0, 2, -1), direction);
+                        } else {
+                            fruitLeaves.put(log.offset(0, 2, 0), direction);
+                            fruitLeaves.put(log.offset(1, 2, 0), direction);
+                            fruitLeaves.put(log.offset(0, 2, 1), direction);
+                            fruitLeaves.put(log.offset(0, 2, -1), direction);
+                        }
+                        if (random.nextInt(7) != 0) {
+                            leaves.put(log.relative(direction).above(), direction);
+                            leaves.put(log.offset(0, 1, 0), direction);
+                            leaves.put(log.offset(-1, 1, 1), direction);
+                            leaves.put(log.offset(-1, 1, -1), direction);
+                            leaves.put(log.offset(1, 1, 1), direction);
+                        } else {
+                            fruitLeaves.put(log.relative(direction).above(), direction);
+                            fruitLeaves.put(log.offset(0, 1, 0), direction);
+                            fruitLeaves.put(log.offset(-1, 1, 1), direction);
+                            fruitLeaves.put(log.offset(-1, 1, -1), direction);
+                            fruitLeaves.put(log.offset(1, 1, 1), direction);
+                        }
+                        if (random.nextInt(6) != 0) {
+                            leaves.put(log.offset(-1, 0, 1), direction);
+                            leaves.put(log.offset(1, 0, 1), direction);
+                            leaves.put(log.offset(0, 0, 1), direction);
+                            leaves.put(log.offset(-1, 0, 0), direction);
+                            leaves.put(log.offset(1, 0, -1), direction);
+                            leaves.put(log.offset(0, 0, -1), direction);
+                        } else {
+                            fruitLeaves.put(log.offset(-1, 0, 1), direction);
+                            fruitLeaves.put(log.offset(1, 0, 1), direction);
+                            fruitLeaves.put(log.offset(0, 0, 1), direction);
+                            fruitLeaves.put(log.offset(-1, 0, 0), direction);
+                            fruitLeaves.put(log.offset(1, 0, -1), direction);
+                            fruitLeaves.put(log.offset(0, 0, -1), direction);
+                        }
+                        if (random.nextInt(8) != 0) {
+                            leaves.put(log.offset(0, -1, 1), direction);
+                            leaves.put(log.offset(0, -1, -1), direction);
+                        } else {
+                            fruitLeaves.put(log.offset(0, -1, 1), direction);
+                            fruitLeaves.put(log.offset(0, -1, -1), direction);
                         }
                     }
                 }
