@@ -12,6 +12,6 @@ public class LycheeTreeGrowerSmall extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ConfiguredFeature<?, ?> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
-        return ModFeatures.LycheedFeatureConfigs.LYCHEE_TREE_SMALL_CONFIG;
+        return ModFeatures.Config.LYCHEE_TREE_SMALL_CONFIG;
     }
 }

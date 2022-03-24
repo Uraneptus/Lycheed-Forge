@@ -32,7 +32,7 @@ public class LycheedMod {
         ModParticleType.PARTICLES.register(event_bus);
 
         event_bus.addListener(this::gatherData);
-
+        MinecraftForge.EVENT_BUS.addListener(ModFeatures.Placement::onBiomeLoad);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
