@@ -1,6 +1,7 @@
-package com.uraneptus.lycheed.core.data;
+package com.uraneptus.lycheed.core.data.client;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.core.data.DatagenUtil;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import com.uraneptus.lycheed.core.registry.ModItems;
 import net.minecraft.data.DataGenerator;
@@ -41,9 +42,8 @@ public class ItemModels extends ItemModelProvider {
         basicBlockItem(ModBlocks.LYCHEE_BEEHIVE.get());
         basicBlockItem(ModBlocks.LYCHEE_CABINET.get());
         basicBlockItem(ModBlocks.LYCHEE_TRAPDOOR.get(), "_bottom");
-        fenceBlockItem(ModBlocks.LYCHEE_FENCE.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
-        //basicBlockItem(ModBlocks.LYCHEE_FENCE.get(), "_inventory");
-        buttonBlockItem(ModBlocks.LYCHEE_BUTTON.get(), name(ModBlocks.LYCHEE_PLANKS.get()));
+        fenceBlockItem(ModBlocks.LYCHEE_FENCE.get(), DatagenUtil.LYCHEE_PLANKS);
+        buttonBlockItem(ModBlocks.LYCHEE_BUTTON.get(), DatagenUtil.LYCHEE_PLANKS);
         generatedItem(ModItems.LYCHEE.get());
         generatedItem(ModItems.DRIED_LYCHEE.get());
         generatedItem(ModItems.LYCHEE_CAKE_SLICE.get());
@@ -53,61 +53,42 @@ public class ItemModels extends ItemModelProvider {
         generatedBlockItemWithItem(ModBlocks.LYCHEE_DOOR.get());
         generatedBlockItemWithItem(ModBlocks.LYCHEE_CAKE.get());
 
-
         System.out.println("ITEM GENERATION COMPLETE");
     }
 
-    private static final String GENERATED = "item/generated";
-    private static final String HANDHELD = "item/handheld";
-
-    private String name(Block block) {
-        return block.getRegistryName().getPath();
-    }
-    private String name(Item item) {
-        return item.getRegistryName().getPath();
-    }
-
-    public ResourceLocation blockLocation(String path) {
-        return new ResourceLocation(LycheedMod.MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + path);
-    }
-
-    public ResourceLocation itemLocation(String path) {
-        return new ResourceLocation(LycheedMod.MOD_ID, ModelProvider.ITEM_FOLDER + "/" + path);
-    }
-
     private void basicBlockItem(Block blockForItem) {
-        withExistingParent(name(blockForItem), blockLocation(name(blockForItem)));
+        withExistingParent(DatagenUtil.name(blockForItem), DatagenUtil.modBlockLocation(DatagenUtil.name(blockForItem)));
     }
 
     private void basicBlockItem(Block blockForItem, String sufix) {
-        withExistingParent(name(blockForItem), blockLocation(name(blockForItem) + sufix));
+        withExistingParent(DatagenUtil.name(blockForItem), DatagenUtil.modBlockLocation(DatagenUtil.name(blockForItem) + sufix));
     }
 
     private void generatedBlockItemWithItem(Block blockForItem) {
-        withExistingParent(name(blockForItem), GENERATED).texture("layer0", itemLocation(name(blockForItem)));
+        withExistingParent(DatagenUtil.name(blockForItem), DatagenUtil.GENERATED).texture("layer0", DatagenUtil.modItemLocation(DatagenUtil.name(blockForItem)));
     }
 
     private void generatedBlockItemWithBlock(Block blockForItem) {
-        withExistingParent(name(blockForItem), GENERATED).texture("layer0", blockLocation(name(blockForItem)));
+        withExistingParent(DatagenUtil.name(blockForItem), DatagenUtil.GENERATED).texture("layer0", DatagenUtil.modBlockLocation(DatagenUtil.name(blockForItem)));
     }
 
     private void basicItem(Item item, String type) {
-        withExistingParent(name(item), type).texture("layer0", itemLocation(name(item)));
+        withExistingParent(DatagenUtil.name(item), type).texture("layer0", DatagenUtil.modItemLocation(DatagenUtil.name(item)));
     }
 
     private void generatedItem(Item item) {
-        basicItem(item, GENERATED);
+        basicItem(item, DatagenUtil.GENERATED);
     }
 
     private void handheldItem(Item item) {
-        basicItem(item, HANDHELD);
+        basicItem(item, DatagenUtil.HANDHELD);
     }
 
     private void fenceBlockItem(Block blockForItem, String texture) {
-        fenceInventory(name(blockForItem), blockLocation(texture));
+        fenceInventory(DatagenUtil.name(blockForItem), DatagenUtil.modBlockLocation(texture));
     }
 
     private void buttonBlockItem(Block blockForItem, String texture) {
-        buttonInventory(name(blockForItem), blockLocation(texture));
+        buttonInventory(DatagenUtil.name(blockForItem), DatagenUtil.modBlockLocation(texture));
     }
 }

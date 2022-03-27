@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "lycheed:block/lychee_basket_bottom",
+    "up": "lycheed:block/lychee_basket_top",
+    "north": "lycheed:block/lychee_basket_front",
+    "south": "lycheed:block/lychee_basket_front",
+    "east": "lycheed:block/lychee_basket_side",
+    "west": "lycheed:block/lychee_basket_side",
+    "particle": "lycheed:block/lychee_basket_top"
+  }
+}

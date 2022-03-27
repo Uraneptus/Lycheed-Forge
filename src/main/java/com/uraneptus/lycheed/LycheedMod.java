@@ -1,21 +1,21 @@
 package com.uraneptus.lycheed;
 
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import com.uraneptus.lycheed.core.data.BlockStates;
-import com.uraneptus.lycheed.core.data.ItemModels;
-import com.uraneptus.lycheed.core.data.LangGenerator;
+import com.uraneptus.lycheed.core.data.client.BlockStates;
+import com.uraneptus.lycheed.core.data.client.ItemModels;
+import com.uraneptus.lycheed.core.data.client.LangGenerator;
 import com.uraneptus.lycheed.core.registry.ModFeatures;
 import com.uraneptus.lycheed.core.registry.ModParticleType;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import org.slf4j.Logger;
 
 @Mod(LycheedMod.MOD_ID)
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -42,8 +42,16 @@ public class LycheedMod {
 
     @SubscribeEvent
     public void gatherData(GatherDataEvent event) {
-        event.getGenerator().addProvider(new BlockStates(event.getGenerator(), event.getExistingFileHelper()));
-        event.getGenerator().addProvider(new ItemModels(event.getGenerator(), event.getExistingFileHelper()));
-        event.getGenerator().addProvider(new LangGenerator(event.getGenerator()));
+        DataGenerator generator = event.getGenerator();
+        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+
+        if (event.includeClient()) {
+            generator.addProvider(new BlockStates(generator, fileHelper));
+            generator.addProvider(new ItemModels(generator, fileHelper));
+            generator.addProvider(new LangGenerator(generator));
+        }
+        if (event.includeServer()) {
+
+        }
     }
 }
