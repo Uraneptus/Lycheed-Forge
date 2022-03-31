@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 @Mod.EventBusSubscriber(modid = LycheedMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LycheedMod {
     public static final String MOD_ID = "lycheed";
+    public static final String BLUEPRINT_MOD_ID = "blueprint";
     public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
 
     public LycheedMod() {

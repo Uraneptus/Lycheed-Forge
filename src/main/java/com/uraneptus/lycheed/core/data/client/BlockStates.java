@@ -1,16 +1,14 @@
 package com.uraneptus.lycheed.core.data.client;
 
 import com.uraneptus.lycheed.LycheedMod;
+import com.uraneptus.lycheed.common.blocks.ModFakeCabinetBlock;
 import com.uraneptus.lycheed.core.data.DatagenUtil;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.ModelProvider;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BlockStates extends BlockStateProvider {
@@ -39,6 +37,8 @@ public class BlockStates extends BlockStateProvider {
         modButtonBlock(ModBlocks.LYCHEE_BUTTON.get(), DatagenUtil.LYCHEE_PLANKS);
         basketBlock(ModBlocks.LYCHEE_BASKET.get());
         beehiveBlock(ModBlocks.LYCHEE_BEEHIVE.get());
+        cabinetBlock(ModBlocks.LYCHEE_CABINET.get());
+        //leaf_carpet(ModBlocks.FRUITFUL_LYCHEE_LEAVES_CARPET.get(), DatagenUtil.FRUITFUL_LYCHEE_LEAVES);
 
         System.out.println("BLOCK GENERATION COMPLETE");
     }
@@ -115,28 +115,33 @@ public class BlockStates extends BlockStateProvider {
     }
 
     private void beehiveBlock(Block block) {
-        ModelFile beehiveModel = models().orientableWithBottom(DatagenUtil.name(block),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"))
-                .texture("particle", DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"));
-
-        ModelFile beehiveHoneyModel = models().orientableWithBottom(DatagenUtil.name(block) + "_honey",
-                        DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"),
-                        DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front_honey"),
-                        DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"),
-                        DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"))
-                .texture("particle", DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"));
-
-        getVariantBuilder(block).forAllStates(bs -> {
-            int honeyLevel = bs.getValue(BlockStateProperties.LEVEL_HONEY);
+        this.horizontalBlock(block, blockState -> {
+            int honeyLevel = blockState.getValue(BlockStateProperties.LEVEL_HONEY);
             String suffix = honeyLevel == 5 ? "_honey" : "";
-            return ConfiguredModel.builder()
-                    .modelFile(new ModelFile.ExistingModelFile(DatagenUtil.modBlockLocation(DatagenUtil.name(block) + suffix), models().existingFileHelper))
-                    .rotationY(((int) bs.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
-                    .build();
+            return models().orientable(DatagenUtil.name(block) + suffix,
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"),
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front" + suffix),
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"));
 
         });
     }
+
+    private void cabinetBlock(Block block) {
+        this.horizontalBlock(block, blockState -> {
+            String suffix = blockState.getValue(ModFakeCabinetBlock.OPEN) ? "_open" : "";
+            return models().orientable(DatagenUtil.name(block) + suffix,
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"),
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front" + suffix),
+                    DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_end"));
+        });
+    }
+
+    /*private void leaf_carpet(Block block, String texture) {
+        //this.cubeAllBP(DatagenUtil.name(block), "leaf_carpet", DatagenUtil.modBlockLocation(DatagenUtil.name(block)));
+        this.simpleBlock(block, models().withExistingParent(DatagenUtil.name(block), "blueprint:block/leaf_carpet").texture("all", DatagenUtil.modBlockLocation(texture)));
+    }
+
+    public void cubeAllBP(String name, String path, ResourceLocation texture) {
+        models().singleTexture(name, DatagenUtil.blueprintBlockLocation(path), "all", texture);
+    }*/
 }

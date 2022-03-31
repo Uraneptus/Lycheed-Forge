@@ -39,9 +39,15 @@ public class DatagenUtil {
         return new ResourceLocation("minecraft", ModelProvider.ITEM_FOLDER + "/" + path);
     }
 
+    public static ResourceLocation blueprintBlockLocation(String path) {
+        return new ResourceLocation(LycheedMod.BLUEPRINT_MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + path);
+    }
+
     //Textures
     public static final String LYCHEE_PLANKS = name(ModBlocks.LYCHEE_PLANKS.get());
     public static final String LYCHEE_LOG = name(ModBlocks.LYCHEE_LOG.get());
     public static final String STRIPPED_LYCHEE_LOG = name(ModBlocks.STRIPPED_LYCHEE_LOG.get());
+    public static final String FRUITFUL_LYCHEE_LEAVES = name(ModBlocks.FRUITFUL_LYCHEE_LEAVES.get());
+    public static final String LYCHEE_LEAVES = name(ModBlocks.LYCHEE_LEAVES.get());
 
 }
