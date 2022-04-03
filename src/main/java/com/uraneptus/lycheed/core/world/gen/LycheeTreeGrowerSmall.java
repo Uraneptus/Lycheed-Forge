@@ -1,6 +1,7 @@
 package com.uraneptus.lycheed.core.world.gen;
 
 import com.uraneptus.lycheed.core.registry.ModFeatures;
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
@@ -11,7 +12,7 @@ public class LycheeTreeGrowerSmall extends AbstractTreeGrower {
 
     @Nullable
     @Override
-    protected ConfiguredFeature<?, ?> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
         return ModFeatures.Config.LYCHEE_TREE_SMALL_CONFIG;
     }
 }

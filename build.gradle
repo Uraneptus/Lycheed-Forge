@@ -26,7 +26,7 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 minecraft {
 
     mappings channel: 'parchment', version: "${parchment_version}-${mc_version}"
-    //mappings channel: 'official', version: "1.18.1"
+    //mappings channel: 'official', version: "1.18.2"
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
 
@@ -89,13 +89,13 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:farmersdelight-398521:${fd_version}")
+    //implementation fg.deobf("curse.maven:farmersdelight-398521:${fd_version}")
     implementation fg.deobf("com.teamabnormals:blueprint:${mc_version}-${blueprint}")
 
-    runtimeOnly fg.deobf("curse.maven:jei-238222:3566128")
-    runtimeOnly fg.deobf("curse.maven:configured-457570:3559398")
-    runtimeOnly fg.deobf("curse.maven:catalogue-459701:3559402")
-    runtimeOnly fg.deobf("curse.maven:appleskin-248787:3549846")
+    runtimeOnly fg.deobf("curse.maven:jei-238222:3723913")
+    runtimeOnly fg.deobf("curse.maven:configured-457570:3721946")
+    runtimeOnly fg.deobf("curse.maven:catalogue-459701:3721991")
+    runtimeOnly fg.deobf("curse.maven:appleskin-248787:3686482")
     //runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3575622")
     //runtimeOnly fg.deobf("curse.maven:quark-243121:3578106")
     //runtimeOnly fg.deobf("curse.maven:buzzier_bees-355458:3226433")

@@ -72,7 +72,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LYCHEE_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "lychee_beehive", () -> new BlueprintBeehiveBlock(LYCHEE_BEEHIVE_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
 
-    public static final RegistryObject<Block> LYCHEE_CABINET = HELPER.createBlock("lychee_cabinet", () -> !ModList.get().isLoaded("farmersdelight") ? new ModFakeCabinetBlock(LYCHEE_PANTRY_PROPERTIES) : ModIntegrations.getCabinetBlock(LYCHEE_PANTRY_PROPERTIES), !ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup());
+    public static final RegistryObject<Block> LYCHEE_CABINET = HELPER.createBlock("lychee_cabinet", () -> !ModList.get().isLoaded("farmersdelight") ? new ModFakeCabinetBlock(LYCHEE_PANTRY_PROPERTIES) : new ModFakeCabinetBlock(LYCHEE_PANTRY_PROPERTIES) /*ModIntegrations.getCabinetBlock(LYCHEE_PANTRY_PROPERTIES)*/, !ModList.get().isLoaded("farmersdelight") ? null : CreativeModeTab.TAB_BUILDING_BLOCKS /*ModIntegrations.getFdItemGroup()*/);
 
 
     static class Properties {

@@ -22,7 +22,7 @@ public class ModItems {
     public static final RegistryObject<Item> LYCHEE = HELPER.createItem("lychee", () -> new BlockItem(ModBlocks.LYCHEE_BRANCH.get(), new Item.Properties().food(LYCHEE_FOOD).tab(CreativeModeTab.TAB_FOOD)));
     public static final RegistryObject<Item> DRIED_LYCHEE = HELPER.createItem("dried_lychee", () -> new Item(new Item.Properties().food(DRIED_LYCHEE_FOOD).tab(CreativeModeTab.TAB_FOOD)));
 
-    public static final RegistryObject<Item> LYCHEE_CAKE_SLICE = HELPER.createItem("lychee_cake_slice", () -> new Item(new Item.Properties().food(LYCHEE_CAKE_SLICE_FOOD).tab(!ModList.get().isLoaded("farmersdelight") ? null : ModIntegrations.getFdItemGroup())));
+    public static final RegistryObject<Item> LYCHEE_CAKE_SLICE = HELPER.createItem("lychee_cake_slice", () -> new Item(new Item.Properties().food(LYCHEE_CAKE_SLICE_FOOD).tab(!ModList.get().isLoaded("farmersdelight") ? null : CreativeModeTab.TAB_FOOD /*ModIntegrations.getFdItemGroup()*/)));
 
     public static final RegistryObject<Item> LYCHEE_BOAT = HELPER.createBoatItem("lychee", ModBlocks.LYCHEE_PLANKS);
 
