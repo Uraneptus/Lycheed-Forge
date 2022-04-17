@@ -5,11 +5,9 @@ import com.uraneptus.lycheed.core.data.DatagenUtil;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import com.uraneptus.lycheed.core.registry.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemModels extends ItemModelProvider {
@@ -31,7 +29,7 @@ public class ItemModels extends ItemModelProvider {
         basicBlockItem(ModBlocks.LYCHEE_STAIRS.get());
         basicBlockItem(ModBlocks.LYCHEE_FENCE_GATE.get());
         basicBlockItem(ModBlocks.LYCHEE_PRESSURE_PLATE.get());
-        basicBlockItem(ModBlocks.LYCHEE_BASKET.get());
+        basicBlockItem(ModBlocks.LYCHEE_CRATE.get());
         basicBlockItem(ModBlocks.LYCHEE_BOOKSHELF.get());
         basicBlockItem(ModBlocks.LYCHEE_LEAVES_CARPET.get());
         basicBlockItem(ModBlocks.FRUITFUL_LYCHEE_LEAVES_CARPET.get());

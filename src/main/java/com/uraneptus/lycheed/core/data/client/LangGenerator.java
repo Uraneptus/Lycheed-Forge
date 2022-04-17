@@ -34,7 +34,7 @@ public class LangGenerator extends LanguageProvider {
         add(ModBlocks.LYCHEE_PRESSURE_PLATE.get(), "Lychee Pressure Plate");
         add(ModBlocks.LYCHEE_SIGN.getFirst().get(), "Lychee Sign");
         add(ModBlocks.LYCHEE_BUTTON.get(), "Lychee Button");
-        add(ModBlocks.LYCHEE_BASKET.get(), "Lychee Basket");
+        add(ModBlocks.LYCHEE_CRATE.get(), "Lychee Crate");
         add(ModBlocks.LYCHEE_CAKE.get(), "Lychee Cake");
         add(ModBlocks.LYCHEE_LADDER.get(), "Lychee Ladder");
         add(ModBlocks.LYCHEE_BOOKSHELF.get(), "Lychee Bookshelf");

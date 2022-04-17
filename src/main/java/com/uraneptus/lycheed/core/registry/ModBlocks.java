@@ -53,7 +53,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> LYCHEE_BUTTON = HELPER.createBlock("lychee_button", () -> new BlueprintWoodButtonBlock(LYCHEE_BUTTON_PROPERTIES), CreativeModeTab.TAB_REDSTONE);
     public static final Pair<RegistryObject<BlueprintStandingSignBlock>, RegistryObject<BlueprintWallSignBlock>> LYCHEE_SIGN = HELPER.createSignBlock("lychee", MaterialColor.COLOR_RED);
 
-    public static final RegistryObject<Block> LYCHEE_BASKET = HELPER.createBlock("lychee_basket", () -> new Block(LYCHEE_BASKET_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> LYCHEE_CRATE = HELPER.createBlock("lychee_crate", () -> new ModCrateBlock(LYCHEE_CRATE_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> LYCHEE_CAKE = HELPER.createBlock("lychee_cake", () -> new ModCakeBlock(LYCHEE_CAKE_PROPERTIES), CreativeModeTab.TAB_FOOD);
 
     public static final RegistryObject<Block> LYCHEE_LADDER = HELPER.createCompatFuelBlock("quark", "lychee_ladder", () -> new BlueprintLadderBlock(LYCHEE_LADDER_PROPERTIES), 300, CreativeModeTab.TAB_DECORATIONS);
@@ -79,7 +79,7 @@ public class ModBlocks {
         public static final BlockBehaviour.Properties LYCHEE_PRESSURE_PLATE_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).strength(0.5F).sound(SoundType.WOOD).noCollission();
         public static final BlockBehaviour.Properties LYCHEE_LEAVES_PROPERTIES = BlockBehaviour.Properties.of(Material.LEAVES, MaterialColor.COLOR_GREEN).requiresCorrectToolForDrops().noOcclusion().strength(0.2F).randomTicks().sound(SoundType.GRASS).isValidSpawn(ModBlocks::allowsSpawnOnLeaves).isSuffocating(ModBlocks::isntSolid).isViewBlocking(ModBlocks::isntSolid);//TOOL: HOE
         public static final BlockBehaviour.Properties LYCHEE_BRANCH_PROPERTIES = BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_GREEN).noCollission().noOcclusion().randomTicks().instabreak().sound(SoundType.CROP);
-        public static final BlockBehaviour.Properties LYCHEE_BASKET_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_RED).sound(SoundType.WOOL);
+        public static final BlockBehaviour.Properties LYCHEE_CRATE_PROPERTIES = BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_RED).sound(SoundType.WOOD);
         public static final BlockBehaviour.Properties LYCHEE_CAKE_PROPERTIES = BlockBehaviour.Properties.of(Material.CAKE).strength(0.5F).sound(SoundType.WOOL);
         public static final BlockBehaviour.Properties LYCHEE_BEEHIVE_PROPERTIES = BlockBehaviour.Properties.copy(Blocks.BEEHIVE);
         public static final BlockBehaviour.Properties LYCHEE_PANTRY_PROPERTIES = BlockBehaviour.Properties.copy(Blocks.BARREL);

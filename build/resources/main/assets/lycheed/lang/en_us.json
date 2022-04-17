@@ -1,7 +1,6 @@
 {
   "block.lycheed.fruitful_lychee_leaf_carpet": "Fruitful Lychee Leaves Carpet",
   "block.lycheed.fruitful_lychee_leaves": "Fruitful Lychee Leaves",
-  "block.lycheed.lychee_basket": "Lychee Basket",
   "block.lycheed.lychee_beehive": "Lychee Beehive",
   "block.lycheed.lychee_bookshelf": "Lychee Bookshelf",
   "block.lycheed.lychee_branch": "Lychee",
@@ -9,6 +8,7 @@
   "block.lycheed.lychee_cabinet": "Lychee Cabinet",
   "block.lycheed.lychee_cake": "Lychee Cake",
   "block.lycheed.lychee_chest": "Lychee Chest",
+  "block.lycheed.lychee_crate": "Lychee Crate",
   "block.lycheed.lychee_door": "Lychee Door",
   "block.lycheed.lychee_fence": "Lychee Fence",
   "block.lycheed.lychee_fence_gate": "Lychee Fence Gate",

@@ -35,7 +35,7 @@ public class BlockStates extends BlockStateProvider {
         modFenceGateBlock(ModBlocks.LYCHEE_FENCE_GATE.get(), DatagenUtil.LYCHEE_PLANKS);
         modPressurePlateBlock(ModBlocks.LYCHEE_PRESSURE_PLATE.get(), DatagenUtil.LYCHEE_PLANKS);
         modButtonBlock(ModBlocks.LYCHEE_BUTTON.get(), DatagenUtil.LYCHEE_PLANKS);
-        basketBlock(ModBlocks.LYCHEE_BASKET.get());
+        basketBlock(ModBlocks.LYCHEE_CRATE.get());
         beehiveBlock(ModBlocks.LYCHEE_BEEHIVE.get());
         cabinetBlock(ModBlocks.LYCHEE_CABINET.get());
         //leaf_carpet(ModBlocks.FRUITFUL_LYCHEE_LEAVES_CARPET.get(), DatagenUtil.FRUITFUL_LYCHEE_LEAVES);
@@ -102,14 +102,10 @@ public class BlockStates extends BlockStateProvider {
     }
 
     private void basketBlock(Block block) {
-        ModelFile basketModel = models().cube(DatagenUtil.name(block),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_bottom"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_top"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_front"),
+        ModelFile basketModel = models().cubeBottomTop(DatagenUtil.name(block),
                 DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"),
-                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_side"))
-                .texture("particle", DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_top"));
+                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_bottom"),
+                DatagenUtil.modBlockLocation(DatagenUtil.name(block) + "_top"));
 
         getVariantBuilder(block).forAllStates(blockState -> ConfiguredModel.builder().modelFile(basketModel).build());
     }

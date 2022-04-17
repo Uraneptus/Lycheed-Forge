@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "lycheed:block/lychee_crate_side",
+    "bottom": "lycheed:block/lychee_crate_bottom",
+    "top": "lycheed:block/lychee_crate_top"
+  }
+}
