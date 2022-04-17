@@ -9,12 +9,8 @@ import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
 import com.teamabnormals.blueprint.common.block.wood.*;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.uraneptus.lycheed.LycheedMod;
-import com.uraneptus.lycheed.ModIntegrations;
-import com.uraneptus.lycheed.common.blocks.ModBranchBlock;
-import com.uraneptus.lycheed.common.blocks.ModCakeBlock;
-import com.uraneptus.lycheed.common.blocks.ModFakeCabinetBlock;
-import com.uraneptus.lycheed.common.blocks.ModLeavesBlock;
-import com.uraneptus.lycheed.core.world.gen.LycheeTreeGrowerSmall;
+import com.uraneptus.lycheed.common.blocks.*;
+import com.uraneptus.lycheed.core.world.gen.LycheeTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -44,7 +40,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> LYCHEE_WOOD = HELPER.createBlock("lychee_wood", () -> new WoodBlock(STRIPPED_LYCHEE_WOOD, LYCHEE_LOG_PROPERTIES), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> LYCHEE_LEAVES = HELPER.createBlock("lychee_leaves", () -> new ModLeavesBlock(LYCHEE_LEAVES_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> FRUITFUL_LYCHEE_LEAVES = HELPER.createBlock("fruitful_lychee_leaves", () -> new ModLeavesBlock(LYCHEE_LEAVES_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> LYCHEE_SAPLING = HELPER.createBlock("lychee_sapling", () -> new BlueprintSaplingBlock(new LycheeTreeGrowerSmall(), LYCHEE_SAPLING_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> LYCHEE_SAPLING = HELPER.createBlock("lychee_sapling", () -> new BlueprintSaplingBlock(new LycheeTreeGrower(), LYCHEE_SAPLING_PROPERTIES), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> LYCHEE_BRANCH = HELPER.createBlockNoItem("lychee_branch", () -> new ModBranchBlock(LYCHEE_BRANCH_PROPERTIES));
 
     public static final RegistryObject<Block> LYCHEE_SLAB = HELPER.createBlock("lychee_slab", () -> new WoodSlabBlock(LYCHEE_PLANKS_PROPERTIES), CreativeModeTab.TAB_BUILDING_BLOCKS);

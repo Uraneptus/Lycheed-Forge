@@ -1,33 +1,29 @@
 package com.uraneptus.lycheed.core.world.gen.feature;
 
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.teamabnormals.blueprint.core.util.TreeUtil;
 import com.uraneptus.lycheed.core.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
-import net.minecraft.world.phys.Vec3;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
+public class LycheeTreeMedium extends Feature<NoneFeatureConfiguration> {
     private static final BlockState LOG = ModBlocks.LYCHEE_LOG.get().defaultBlockState();
-    //private static final BlockState LEAVES = ModBlocks.LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3);
-    //private static final BlockState FRUIT_LEAVES = ModBlocks.FRUITFUL_LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3);
     private static final WeightedStateProvider LEAVES_STATE_PROVIDER =  new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModBlocks.LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3), 3).add(ModBlocks.FRUITFUL_LYCHEE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3), 1));
 
-    public LycheeTreeSmall(Codec<NoneFeatureConfiguration> pCodec) {
+    public LycheeTreeMedium(Codec<NoneFeatureConfiguration> pCodec) {
         super(pCodec);
     }
 
@@ -37,36 +33,22 @@ public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
         BlockPos pos = context.origin();
         Random random = context.random();
         BlockPos blockPos = pos;
-        int trunkHeight = 3;
+        int trunkHeight = 4;
 
         List<BlockPos> logs = new ArrayList<>();
         List<BlockPos> leaves = new ArrayList<>();
-
-        /*ArrayList<Pair<Vec3, BlockState>> blocks = new ArrayList<>();
-
-        blocks.add(Pair.of(new Vec3(0, 5, 0), LEAVES));
-        blocks.add(Pair.of(new Vec3(0, 4, 0), LEAVES));
-        blocks.add(Pair.of(new Vec3(1, 4, 0), LEAVES));
-        blocks.add(Pair.of(new Vec3(0, 4, 1), LEAVES));
-        blocks.add(Pair.of(new Vec3(0, 4, -1), LEAVES));
-
-
-        for (int i = 0; i < blocks.size(); i++) {
-            Pair<Vec3, BlockState> block = blocks.get(i);
-            blocks.set(i, Pair.of(block.getFirst().yRot(90 * random.nextInt(4)), block.getSecond()));
-        }
-        for (Pair<Vec3, BlockState> block : blocks) {
-            level.setBlock(pos.offset(new Vec3i(block.getFirst().x, block.getFirst().y, block.getFirst().z)), block.getSecond(), 19);
-        }*/
-
 
         if (!TreeUtil.isValidGround(level, pos.below(), (SaplingBlock) ModBlocks.LYCHEE_SAPLING.get())) {
             return false;
         }
 
         for (int i = 0; i < trunkHeight; i++) {
+            logs.add(pos.offset(-1, 4, 0));
+
             logs.add(blockPos);
             blockPos = blockPos.above();
+
+
         }
 
         int i = 0;
@@ -77,29 +59,39 @@ public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
                     if (direction.getAxis().isHorizontal()) {
                         if (i == trunkHeight - 1) {
 
-                            leaves.add(log.offset(0, 3, 0));
+                            leaves.add(log.offset(0, 5,0));
 
-                            leaves.add(log.offset(0, 2, 0));
-                            leaves.add(log.offset(1, 2, 0));
-                            leaves.add(log.offset(0, 2, 1));
-                            leaves.add(log.offset(0, 2, -1));
+                            leaves.add(log.offset(0, 4,0));
+                            leaves.add(log.offset(0, 4,1));
+                            leaves.add(log.offset(-1, 4,0));
+                            leaves.add(log.offset(-1, 4,1));
 
-                            leaves.add(log.relative(direction).above());
-                            leaves.add(log.offset(0, 1, 0));
-                            leaves.add(log.offset(-1, 1, 1));
-                            leaves.add(log.offset(-1, 1, -1));
-                            leaves.add(log.offset(1, 1, 1));
+                            leaves.add(log.offset(0, 3,0));
+                            leaves.add(log.offset(0, 3,-1));
+                            leaves.add(log.offset(0, 3,1));
+                            leaves.add(log.offset(0, 3,2));
+                            leaves.add(log.offset(1, 3,0));
+                            leaves.add(log.offset(-2, 3,0));
+                            leaves.add(log.offset(-1, 3,1));
+                            leaves.add(log.offset(-1, 3,-1));
+                            leaves.add(log.offset(1, 3,1));
 
+                            leaves.add(log.offset(0, 2,-1));
+                            leaves.add(log.offset(0, 2,1));
+                            leaves.add(log.offset(0, 2,2));
+                            leaves.add(log.offset(-1, 2,0));
+                            leaves.add(log.offset(-2, 2,0));
+                            leaves.add(log.offset(1, 2,0));
+                            leaves.add(log.offset(1, 2,1));
+                            leaves.add(log.offset(1, 2,2));
+                            leaves.add(log.offset(-1, 2,1));
+                            leaves.add(log.offset(-1, 2,-1));
+                            leaves.add(log.offset(1, 2,-1));
 
-                            leaves.add(log.offset(-1, 0, 1));
-                            leaves.add(log.offset(1, 0, 1));
-                            leaves.add(log.offset(0, 0, 1));
-                            leaves.add(log.offset(-1, 0, 0));
-                            leaves.add(log.offset(1, 0, -1));
-                            leaves.add(log.offset(0, 0, -1));
-
-                            leaves.add(log.offset(0, -1, 1));
-                            leaves.add(log.offset(0, -1, -1));
+                            leaves.add(log.offset(0, 1,-1));
+                            leaves.add(log.offset(1, 1,0));
+                            leaves.add(log.offset(-2, 1,0));
+                            leaves.add(log.offset(1, 1,2));
                         }
                     }
                 }
@@ -107,7 +99,6 @@ public class LycheeTreeSmall extends Feature<NoneFeatureConfiguration> {
 
             i += 1;
         }
-
 
         if (pos.getY() >= 1 && pos.getY() < level.getMaxBuildHeight() - trunkHeight) {
             for (BlockPos blockPos1 : logs) {

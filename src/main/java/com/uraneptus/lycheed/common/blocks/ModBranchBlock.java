@@ -130,7 +130,6 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
         return new ItemStack(getBaseSeedId());
     }
 
-    //Bad code
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         int i = state.getValue(AGE);
         boolean flag = i == 3;

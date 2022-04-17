@@ -8,11 +8,16 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class LycheeTreeGrowerSmall extends AbstractTreeGrower {
+public class LycheeTreeGrower extends AbstractTreeGrower {
 
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
-        return ModFeatures.Config.LYCHEE_TREE_SMALL_CONFIG;
+        int treeRandom = pRandom.nextInt(3);
+        if (treeRandom == 1) {
+            return ModFeatures.Config.LYCHEE_TREE_SMALL_CONFIG;
+        } else {
+            return ModFeatures.Config.LYCHEE_TREE_MEDIUM_CONFIG;
+        }
     }
 }
