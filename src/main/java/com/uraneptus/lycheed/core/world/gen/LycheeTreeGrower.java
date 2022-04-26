@@ -13,11 +13,6 @@ public class LycheeTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random pRandom, boolean pLargeHive) {
-        int treeRandom = pRandom.nextInt(3);
-        if (treeRandom == 1) {
-            return ModFeatures.Config.LYCHEE_TREE_SMALL_CONFIG;
-        } else {
-            return ModFeatures.Config.LYCHEE_TREE_MEDIUM_CONFIG;
-        }
+        return ModFeatures.Config.LYCHEE_TREES_CONFIG;
     }
 }

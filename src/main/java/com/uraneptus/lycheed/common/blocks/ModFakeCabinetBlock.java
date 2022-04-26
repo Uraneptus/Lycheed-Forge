@@ -25,7 +25,7 @@ public class ModFakeCabinetBlock extends Block {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(new Property[]{FACING, OPEN});
+        builder.add(FACING, OPEN);
     }
 
     static {

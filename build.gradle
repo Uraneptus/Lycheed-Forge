@@ -5,7 +5,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath(group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true) { exclude group: 'org.apache.logging.log4j' }
+        classpath 'org.apache.logging.log4j:log4j-api:2.11.2'
+        classpath 'org.apache.logging.log4j:log4j-core:2.11.2'
         classpath 'org.parchmentmc:librarian:1.+'
     }
 }
@@ -89,7 +91,7 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    //implementation fg.deobf("curse.maven:farmersdelight-398521:${fd_version}")
+    implementation fg.deobf("curse.maven:farmersdelight-398521:${fd_version}")
     implementation fg.deobf("com.teamabnormals:blueprint:${mc_version}-${blueprint}")
 
     runtimeOnly fg.deobf("curse.maven:jei-238222:3723913")

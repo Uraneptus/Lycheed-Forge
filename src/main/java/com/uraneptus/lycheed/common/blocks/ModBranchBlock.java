@@ -45,7 +45,7 @@ public class ModBranchBlock extends Block implements BonemealableBlock {
 
     public ModBranchBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     protected ItemLike getBaseSeedId() {
